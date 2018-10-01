@@ -1,0 +1,37 @@
+Package: stepwiser
+Type: Package
+Title: Demonstrates effects of using stepwise variable selection
+Version: 0.1.0
+Date: 2018-10-01
+Authors@R: c(
+    person("R. Mark", "Sharp", email = "rmsharp@me.com", , 
+    role = c("aut", "ctb", "cre")))
+Description: Instructional simulations and plots to demonstrate effects of stepwise variable selection.
+URL: https://rmsharp.github.io/stepwiser/, https://github.com/rmsharp/stepwiser
+BugReports: https://github.com/rmsharp/stepwiser/issues
+DisplayMode: Showcase
+Depends:
+    R (>= 3.2.1)
+Imports:
+    coxrobust,
+    doSNOW,
+    foreach,
+    MASS,
+    pscl,
+    snow,
+    survival,
+    xtable,
+    Zelig
+Suggests:
+    covr,
+    dplyr,
+    knitr,
+    pkgdown,
+    roxygen2 (>= 6.0.0),
+    testthat
+Remotes: github::rmsharp/rmsutilityr
+Encoding: UTF-8
+License: MIT + file LICENSE
+RoxygenNote: 6.1.0
+LazyData: TRUE
+VignetteBuilder: knitr

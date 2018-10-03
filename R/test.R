@@ -1,3 +1,4 @@
+library(stringi)
 # OLS as a Probability Model
 set.seed(123456) # Set the seed for reproducible results
 ## junk
@@ -34,14 +35,14 @@ coverage <- function(b, se, true, level = .95, df = Inf){ # Estimate,
   # true parameter, 
   # confidence level, 
   # and df  
-  qtile <- level + (1 - level)/2 # Compute the proper quantile
-  lower.bound <- b - qt(qtile, df = df)*se # Lower bound
-  upper.bound <- b + qt(qtile, df = df)*se # Upper bound 
+  qtile <- level + (1 - level) / 2 # Compute the proper quantile
+  lower.bound <- b - qt(qtile, df = df) * se # Lower bound
+  upper.bound <- b + qt(qtile, df = df) * se # Upper bound 
   # Is the true parameter in the confidence interval? (yes = 1)
   true.in.ci <- ifelse(true >= lower.bound & true <= upper.bound, 1, 0)
   cp <- mean(true.in.ci) # The coverage probability
-  mc.lower.bound <- cp - 1.96*sqrt((cp*(1 - cp))/length(b)) # Monte Carlo error  
-  mc.upper.bound <- cp + 1.96*sqrt((cp*(1 - cp))/length(b))  
+  mc.lower.bound <- cp - 1.96 * sqrt((cp * (1 - cp)) / length(b)) # Monte Carlo error  
+  mc.upper.bound <- cp + 1.96 * sqrt((cp * (1 - cp)) / length(b))  
   return(list(coverage.probability = cp, # Return results
               true.in.ci = true.in.ci,
               ci = cbind(lower.bound, upper.bound),
@@ -53,8 +54,8 @@ set.seed(32945) # Set the seed for reproducible results
 reps <- 1000 # Set the number of repetitions at the top of the script
 par.est.logit <- matrix(NA, nrow = reps, ncol = 4) # Empty matrix to store
 # the estimates 
-b0 <- .2 # True value for the intercept
-b1 <- .5 # True value for the slope
+b0 <- 0.2 # True value for the intercept
+b1 <- 0.01 # True value for the slope
 n <- 1000 # Sample size
 X <- runif(n, -1, 1) # Create a sample of n observations on the 
 # independent variable X
@@ -101,7 +102,12 @@ axis(2, cex.axis = 1.25, las = 2)
 title(xlab = expression(hat(beta)[1]), cex.lab = 1.5)
 title(ylab = expression("Frequency"), line = 3.75, cex.lab = 1.5)
 abline(v = b1, lwd = 4)
-text(.75, 125, expression("True"~beta[1]~"= 0.50"), cex = 1.5)
+text(.75, 125, bquote("True "~beta[1]==.(b1)), cex = 1.5)
 box()
 
 dev.off()
+x <- rnorm(100, 0, 1)
+x <- matrix(x, nrow = 10)
+y <- rnorm(10, 1, 1)
+mod3 <- glm(y ~ x)
+s3 <- simulate(mod3, nsim = 3)

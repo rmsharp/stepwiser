@@ -15,3 +15,9 @@ test_that("get_predictors stops on input errors", {
   expect_error(get_predictors(corr = corr, n = n, p = 0, Z), error_mes)
   expect_error(get_predictors(corr = corr[-1], n = n, p, Z), error_mes)
 })
+test_that("get_predictors creates correct matrix", {
+  test <- get_predictors(corr = corr, n = n, p = p, Z = Z)
+  expect_equal(dim(test), c(n, p))
+  expect_equal(test[1, 1], -0.4972338)
+  expect_equal(test[1000, 50], 1.590994, tolerance = .0001, scale = 1)
+})

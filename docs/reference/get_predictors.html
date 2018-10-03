@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • stepwiser</title>
+<title>get_predictors returns matrix of predictor variable data elements — get_predictors • stepwiser</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,7 +30,10 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="get_predictors returns matrix of predictor variable data elements — get_predictors" />
+
+<meta property="og:description" content="get_predictors returns matrix of predictor variable data elements" />
+<meta name="twitter:card" content="summary" />
 
 
 
@@ -46,7 +49,7 @@
   </head>
 
   <body>
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -92,42 +95,59 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>get_predictors returns matrix of predictor variable data elements</h1>
+    <small class="dont-index">Source: <a href='https://github.com/rmsharp/stepwiser/blob/master/R/get_predictors.R'><code>R/get_predictors.R</code></a></small>
+    <div class="hidden name"><code>get_predictors.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    
+    <p>get_predictors returns matrix of predictor variable data elements</p>
+    
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
-
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="get_predictors.html">get_predictors()</a></code> </p>
-        </td>
-        <td><p>get_predictors returns matrix of predictor variable data elements</p></td>
-      </tr>
-    </tbody>
+    <pre class="usage"><span class='fu'>get_predictors</span>(<span class='no'>corr</span>, <span class='no'>n</span>, <span class='no'>p</span>, <span class='no'>Z</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>corr</th>
+      <td><p>correlation parameters that is a vector of length p. The X 
+columns created with a correlation parameter value greater than 0
+are authentic predictors and those with</p></td>
+    </tr>
+    <tr>
+      <th>n</th>
+      <td><p>number of observations (subjects)</p></td>
+    </tr>
+    <tr>
+      <th>p</th>
+      <td><p>number of predictive variables</p></td>
+    </tr>
+    <tr>
+      <th>Z</th>
+      <td><p>a matrix of independent identically distributed pseudorandom 
+variates with <code>n</code> rows and <code>p + 1</code> columns.</p></td>
+    </tr>
     </table>
-  </div>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
+    <p>matrix of continuous predictive variables</p>
+    
+
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-all-functions">All functions</a></li>
-    </ul>
+      <li><a href="#arguments">Arguments</a></li>
+      
+      <li><a href="#value">Value</a></li>
+          </ul>
+
   </div>
 </div>
 

@@ -1,0 +1,43 @@
+### Simulation constants
+
+Sample sizes
+
+```{r sample-size}
+n_values <- c(30, 60, 90, 300, 600, 900, 3000, 6000, 9000)
+n_values
+
+```
+Candidate predictor variables
+```{r predictive-variables}
+predictors <- c(12, 18, 24)
+predictors
+
+```
+
+from $\rho_{X_{i}X_{j}}$
+
+```{r correlation}
+rho_values <- c(0, sqrt(0.4), sqrt(0.8))
+rho_values
+
+```
+$\alpha$
+```{r alpha}
+MFWER <- 0.15
+
+alpha_values <- c(0.15, 1 - (1 - MFWER)^(1 / n_predictors), 0.05)
+alpha_values
+
+```
+```{r betas}
+betas <- c(1, 2, 3, -1, -2, -3)
+#betas <- 2
+betas
+
+```
+
+```{r reproduce-simulation}
+sim_object <- dk_sim(betas, n_values, rho_values, predictors, "backward", rnorm, 
+                     0, 0.2)
+
+```

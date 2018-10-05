@@ -11,14 +11,22 @@
 #'          variates with \code{n} rows and \code{p + 1} columns.
 #' @importFrom stringi stri_c
 #' @export
-get_predictors <- function(corr, n, p, Z) {
-  if (p < 1 | n < 2 | any(corr < 0.0) | length(corr) != p |
-      dim(Z)[1] != n | dim(Z)[2] != (p + 1))
+get_predictors <- function(y, betas, corr, p, error_fun) {
+  if (length(y) < 2 | length(betas) < 0 | p < 1 | any(corr < 0.0) | length(corr) != p)
     stop(stri_c("Parameter error: check that p >= 1, n >= 2, all(corr >= 0.0), ",
                 "length(corr) == p, dim(Z)[1] == n and dim(Z)[2] == (p + 1)"))
+  
+  if (is.null(error_fun))
+    error_fun <- function(y) {rnorm(length(y), 0, 0.02)}
+  n <- length(y)
   X <- matrix(NA, nrow = n, ncol = p)
   for (j in 1:p) {
-    X[ , j] <- (1 - corr[j]^2)^(0.5) * Z[ , j] + corr[j] * Z[ , p + 1]
+    if (j <= length(betas))
+      mult <- y * betas[j]
+    else
+      mult <- rnorm(length(y), sample(1:10, 1), sample(1:10, 1) * 0.1)
+    
+    X[ , j] <- (1 - corr[j]^2)^(0.5) * mult + corr[j] * y + error_fun(y)
   }
   X
 }

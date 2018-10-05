@@ -1,0 +1,51 @@
+---
+title: "Do Not Misstep"
+author: "R. Mark Sharp"
+date: "10/4/2018"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Open Ridicule By Statisticians
+
+- Stepwise regression is important in developing prediction models only in the sense that it is important to avoid its use.
+
+- Stepwise variable selection has done incredible damage to science.  How did we statisticians let this happen?
+
+- A journey of a thousand hypotheses begins with a single stepwise regression
+
+## Statistical Issues
+- Yields R-squared values that are biased to be high.
+- Based on methods (e.g., F tests for nested models) intended to be used to test prespecified hypotheses.
+- _F_ and $\chi^2$ tests do not have the claimed distribution.
+- Yields p-values that do not have the proper meaning, and the proper correction for them is a difficult problem.
+- Gives biased regression coefficients that need shrinkage
+
+## Effects
+- Has severe problems in the presence of collinearity.
+- Increasing the sample size does not help much.
+The size of the sample was of little practical importance in determining the number of authentic variables contained in the final model.
+- The number of candidate predictor variables affected the number of noise variables that gained entry to the model.
+- Method yields confidence intervals for effects and predicted values that are falsely narrow
+
+## Slide with Bullets
+
+- Bullet 1
+- Bullet 2
+- Bullet 3
+
+## Slide with R Output
+
+```{r cars, echo = TRUE}
+summary(cars)
+```
+
+## Slide with Plot
+
+```{r pressure}
+plot(pressure)
+```
+

@@ -4,16 +4,16 @@
 \alias{get_predictors}
 \title{get_predictors returns matrix of predictor variable data elements}
 \usage{
-get_predictors(corr, n, p, Z)
+get_predictors(y, betas, corr, p, error_fun)
 }
 \arguments{
 \item{corr}{correlation parameters that is a vector of length p. The X 
 columns created with a correlation parameter value greater than 0
 are authentic predictors and those with}
 
-\item{n}{number of observations (subjects)}
-
 \item{p}{number of predictive variables}
+
+\item{n}{number of observations (subjects)}
 
 \item{Z}{a matrix of independent identically distributed pseudorandom 
 variates with \code{n} rows and \code{p + 1} columns.}

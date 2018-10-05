@@ -31,16 +31,18 @@ dk_sim <- function(betas, n_values, rho_values, predictors, direction,
       for (rho in rho_values) {
         for (p in predictors) {
           corr <- c(rep(rho, min(p, 6)), rep(0, max(p - 6, 0)))
-          Z <- matrix(rnorm(n * (p + 1), 0, 1), nrow = n, ncol = p + 1)
-          X <- get_predictors(corr, n, p, Z)
-          X <- as.data.frame(X)
+          y <- rnorm(n, 0, 100)
+          error_fun <- function(y) {
+            rnorm(length(y), sample(1:10, 1), sample(1:10, 1))
+          }
+          X <- get_predictors(y, betas, corr, p, error_fun)
+          X <- as.data.frame(X, drop = FALSE)
           names(X) <- stri_c("X_", 1:ncol(X))
-          T <- get_targets(betas, X, error_fun, n, ...)
-          data <- data.frame(y = T, X)
+          data <- data.frame(y = y, X, drop = FALSE)
           fit <- glm(y ~ ., data = data)
-          sink("/dev/null")
+          #sink("/dev/null")
           step <- invisible(stepAIC(fit, direction = direction))
-          sink()
+          #sink()
           estimates <- invisible(summary(step))[[12]]
           row <- row + 1
           results[[row]] <- list(

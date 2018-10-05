@@ -4,6 +4,7 @@ Sample sizes
 
 ```{r sample-size}
 n_values <- c(30, 60, 90, 300, 600, 900, 3000, 6000, 9000)
+n_values <- c(3000, 6000, 9000)
 n_values
 
 ```
@@ -25,7 +26,7 @@ $\alpha$
 ```{r alpha}
 MFWER <- 0.15
 
-alpha_values <- c(0.15, 1 - (1 - MFWER)^(1 / n_predictors), 0.05)
+alpha_values <- c(0.15, 1 - (1 - MFWER)^(1 / predictors), 0.05)
 alpha_values
 
 ```

@@ -37,7 +37,7 @@ Find online documentation at [https://rmsharp.github.io/stepwiser/](https://rmsh
 The use of automated subset search algorithms for the selection of predictive variables to include in the final model is a standard practice.
 This package provides simulation tools (Monte Carlo) and vignettes using those tools to investigate and 
 expose the weaknesses of using stepwise methods (backward elimination, forward
-selection, and stepwise algorithms).
+selection, and stepwise algorithms) to select predictive variables.
 
 Despite extensive exposure of the characteristics and limitations of these stepwise
 procedures, many users of these algorithms still attribute more to the methds than they should.

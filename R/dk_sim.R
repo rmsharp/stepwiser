@@ -27,7 +27,6 @@
 #' @importFrom stats rnorm
 #' @importFrom utils flush.console
 #' @export
-
 dk_sim <- function(file = "", directions, betas, n_values, alpha_values, 
                    rho_values, predictors, sims, error_fun, ...) {
   rows <- length(alpha_values) *
@@ -45,14 +44,15 @@ dk_sim <- function(file = "", directions, betas, n_values, alpha_values,
       for (alpha in alpha_values) {
         for (rho in rho_values) {
           for (p in predictors) {
-            if (p > n)
+            if (p > n) {
               next
+            }
             corr <- c(rep(rho, min(p, n_betas)), rep(0, max(p - n_betas, 0)))
             r_row <- 0
             for (i in 1:sims) {
               y <- rnorm(n, 0, 100)
               error_fun <- function(y) {
-                rnorm(length(y), sample(1:10, 1), sample(1:10, 1))
+                rnorm(n, sample(1:10, 1), sample(1:10, 1))
               }
               X <- get_predictors(y, betas, corr, p, error_fun)
               X <- as.data.frame(X, drop = FALSE)
@@ -81,14 +81,14 @@ dk_sim <- function(file = "", directions, betas, n_values, alpha_values,
               fivenum_noise = fivenum_noise,
               sims = sims)
             cat(file = file, paste0("row ", s_row, " of ", rows, ", alpha = ", alpha, 
-                       ", n = ", n, ", rho = ", round(rho, 2), 
-                       ", p = ", p, ", family = ", step$family$family, 
-                       ", link = ", step$family$link,
-                       ", fivenum_authentic[min, median, max] = ", 
-                       fivenum_authentic[1], ", ", fivenum_authentic[3], ", ", fivenum_authentic[5],
-                       ", fivenum_noise[min, median, max] = ", 
-                       fivenum_noise[1], ", ", fivenum_noise[3], ", ", fivenum_noise[5], 
-                       ", sims = ", sims, ".\n"), append = TRUE)
+                                    ", n = ", n, ", rho = ", round(rho, 2), 
+                                    ", p = ", p, ", family = ", step$family$family, 
+                                    ", link = ", step$family$link,
+                                    ", fivenum_authentic[min, median, max] = ", 
+                                    fivenum_authentic[1], ", ", fivenum_authentic[3], ", ", fivenum_authentic[5],
+                                    ", fivenum_noise[min, median, max] = ", 
+                                    fivenum_noise[1], ", ", fivenum_noise[3], ", ", fivenum_noise[5], 
+                                    ", sims = ", sims, ".\n"), append = TRUE)
             flush.console()
           }
         }

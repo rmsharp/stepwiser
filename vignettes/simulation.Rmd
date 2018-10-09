@@ -1,5 +1,9 @@
 ### Simulation constants
 
+```{r file, echo = TRUE, include = TRUE}
+file <- "dk_sim.csv"
+```
+
 Number of simulations
 ```{r sims, echo = TRUE, include = TRUE}
 library(stepwiser)
@@ -56,7 +60,7 @@ alpha_values
 ```
 
 ```{r reproduce-simulation}
-sim_object <- dk_sim(sims = sims, directions = "backward", betas, n_values, rho_values, alpha_values, predictors, rnorm, 0, 0.2)
+sim_object <- dk_sim(file = file, directions = "backward", betas, n_values, alpha_values, rho_values, predictors, sims = sims, rnorm, 0, 0.2)
 
 ```
 

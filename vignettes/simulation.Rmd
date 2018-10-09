@@ -38,6 +38,13 @@ rho_values <- c(0, sqrt(0.1), sqrt(0.2), sqrt(0.4), sqrt(0.8))
 rho_values
 
 ```
+Candidate predictor variables
+```{r predictive-variables}
+predictors <- c(12, 18, 24, 50, 100)
+predictors
+
+```
+
 $\alpha$
 ```{r alpha}
 MFWER <- 0.15
@@ -47,12 +54,6 @@ alpha_values
 
 ```
 
-Candidate predictor variables
-```{r predictive-variables}
-predictors <- c(12, 18, 24, 50, 100)
-predictors
-
-```
 ```{r reproduce-simulation}
 sim_object <- dk_sim(sims = sims, directions = "backward", betas, n_values, rho_values, alpha_values, predictors, rnorm, 0, 0.2)
 

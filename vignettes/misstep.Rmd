@@ -2,7 +2,7 @@
 title: "Do Not Misstep"
 author: "R. Mark Sharp"
 date: "10/4/2018"
-output: ioslides_presentation
+output: powerpoint_presentation
 ---
 
 ```{r setup, include=FALSE}

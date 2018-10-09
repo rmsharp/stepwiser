@@ -4,13 +4,13 @@ Sample sizes
 
 ```{r sample-size}
 n_values <- c(30, 60, 90, 300, 600, 900, 3000, 6000, 9000)
-n_values <- c(3000, 6000, 9000)
+n_values <- c(30, 60, 90, 300, 600, 900, 3000, 6000, 9000)
 n_values
 
 ```
 Candidate predictor variables
 ```{r predictive-variables}
-predictors <- c(12, 18, 24)
+predictors <- c(12, 18, 24, 50, 100)
 predictors
 
 ```
@@ -38,7 +38,6 @@ betas
 ```
 
 ```{r reproduce-simulation}
-sim_object <- dk_sim(betas, n_values, rho_values, predictors, "backward", rnorm, 
-                     0, 0.2)
+sim_object <- dk_sim(sims = 3, betas, n_values, rho_values, predictors, "backward", rnorm, 0, 0.2)
 
 ```

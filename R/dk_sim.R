@@ -7,6 +7,7 @@
 #' 
 #' @return object with 
 #' 
+#' @param sims number of simulations
 #' @param betas coefficients of regression
 #' @param n_values vector of sample sizes
 #' @param rho_values vector of correlations between real predictors
@@ -17,49 +18,58 @@
 #' @importFrom MASS stepAIC
 #' @export
 
-dk_sim <- function(betas, n_values, rho_values, predictors, direction, 
+dk_sim <- function(sims, betas, n_values, rho_values, predictors, direction, 
                    error_fun, ...) {
   rows <- length(alpha_values) *
           length(n_values) *
           length(rho_values) *
           length(predictors)
-  results <- list(rows)
-  row <- 0
+  results <- list(sims)
+  sim_results <- list(rows)
+  s_row <- 0
+  n_betas <- length(betas)
+  authentic <- paste0("X_", 1:n_betas)
   
   for (alpha in alpha_values) {
     for (n in n_values) {
       for (rho in rho_values) {
         for (p in predictors) {
           corr <- c(rep(rho, min(p, 6)), rep(0, max(p - 6, 0)))
-          y <- rnorm(n, 0, 100)
-          error_fun <- function(y) {
-            rnorm(length(y), sample(1:10, 1), sample(1:10, 1))
+          r_row <- 0
+          for (i in 1:sims) {
+            y <- rnorm(n, 0, 100)
+            error_fun <- function(y) {
+              rnorm(length(y), sample(1:10, 1), sample(1:10, 1))
+            }
+            X <- get_predictors(y, betas, corr, p, error_fun)
+            X <- as.data.frame(X, drop = FALSE)
+            names(X) <- paste0("X_", 1:ncol(X))
+            data <- data.frame(y = y, X, drop = FALSE)
+            fit <- glm(y ~ ., data = data)
+            sink("/dev/null")
+            step <- invisible(stepAIC(fit, direction = direction))
+            sink()
+            #estimates <- invisible(summary(step))[[12]] # don't need
+            r_row <- r_row + 1
+            results[[r_row]] <- list(coef_names = names(step$coefficients))
           }
-          X <- get_predictors(y, betas, corr, p, error_fun)
-          X <- as.data.frame(X, drop = FALSE)
-          names(X) <- stri_c("X_", 1:ncol(X))
-          data <- data.frame(y = y, X, drop = FALSE)
-          fit <- glm(y ~ ., data = data)
-          #sink("/dev/null")
-          step <- invisible(stepAIC(fit, direction = direction))
-          #sink()
-          estimates <- invisible(summary(step))[[12]]
-          row <- row + 1
-          results[[row]] <- list(
-            betas = betas,
-            alpha = alpha,
-            n = n,
-            rho = rho,
-            p = p,
-            coefficients = coef(step),
-            aic = step$aic,
-            family = step$family$family,
-            link = step$family$link,
-            estimates = estimates)
+          s_row <- s_row + 1
+          
+          mean_authentic <- mean(sapply(results, function(x) {
+            length(authentic[x$coef_names %in% authentic])
+          } ))
+          mean_noise <- mean(sapply(results, function(x) {
+            length(x$coef_names[!x$coef_names %in% authentic])
+          } ))
+          sim_results[[s_row]] <- list(
+            betas = betas, alpha = alpha, n = n, rho = rho, p = p,
+            family = step$family$family, link = step$family$link,
+            mean_authentic = mean_authentic, mean_noise = mean_noise,
+            sims = sims)
         }
       }
     }
   }
-  results
+  sim_results
 }
 

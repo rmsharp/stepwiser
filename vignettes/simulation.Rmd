@@ -2,6 +2,7 @@
 
 Number of simulations
 ```{r sims, echo = TRUE, include = TRUE}
+library(stepwiser)
 sims <- 10
 sims
 ```

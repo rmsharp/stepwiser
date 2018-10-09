@@ -2,13 +2,13 @@
 #' 
 #' @return matrix of continuous predictive variables
 #' 
+#' @param y target value observations
+#' @param betas coefficients to use to make the target values
 #' @param corr correlation parameters that is a vector of length p. The X 
 #' columns created with a correlation parameter value greater than 0
-#' are authentic predictors and those with 
-#' @param n number of observations (subjects)
+#' are authentic predictors and those with no correlation parameter are noise
 #' @param p number of predictive variables
-#' @param Z a matrix of independent identically distributed pseudorandom 
-#'          variates with \code{n} rows and \code{p + 1} columns.
+#' @param error_fun error function 
 #' @importFrom stringi stri_c
 #' @export
 get_predictors <- function(y, betas, corr, p, error_fun) {

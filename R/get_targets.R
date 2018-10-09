@@ -4,6 +4,8 @@
 #' 
 #' @param betas coefficients to use to make the target values
 #' @param X a matrix of observed predictor variable values
+#' @param error_fun error function 
+#' @param ... additional arguments need by \code{error_fun}
 #' @importFrom stringi stri_c
 #' @export
 get_targets <- function(betas, X, error_fun, ...) {

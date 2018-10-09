@@ -4,19 +4,26 @@
 \alias{dk_sim}
 \title{dk_sim simulation function based on a 1992 paper by Derksen and Keselman}
 \usage{
-dk_sim(sims, betas, n_values, rho_values, predictors, direction, error_fun,
-  ...)
+dk_sim(file = "", directions, betas, n_values, alpha_values, rho_values,
+  predictors, sims, error_fun, ...)
 }
 \arguments{
-\item{sims}{number of simulations}
+\item{file}{character containing file argument to cat used to report intermediate results}
+
+\item{directions}{character vector with one or more of "backward", "forward",
+or "both".}
 
 \item{betas}{coefficients of regression}
 
 \item{n_values}{vector of sample sizes}
 
+\item{alpha_values}{vector of alpha threshold values}
+
 \item{rho_values}{vector of correlations between real predictors}
 
 \item{predictors}{vector of the number of predictor variables to include}
+
+\item{sims}{number of simulations}
 
 \item{error_fun}{function providing the error term for each row of 
 observations}
@@ -31,4 +38,7 @@ Backward, forward and stepwise automated subset selection algorithms:
 Frequency of obtaining authentic and noise variables by Shelley Derksen
 H. J. Keselman, British Journal of Mathematical and Statistical Psychology
 (1992) 45, 265-282.
+}
+\details{
+Need to allow add and remove thresholds instead of a single value.
 }

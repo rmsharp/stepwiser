@@ -19,6 +19,7 @@ Imports:
     MASS,
     pscl,
     snow,
+    stringi,
     survival,
     xtable,
     Zelig

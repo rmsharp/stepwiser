@@ -10,6 +10,10 @@ get_targets(betas, X, error_fun, ...)
 \item{betas}{coefficients to use to make the target values}
 
 \item{X}{a matrix of observed predictor variable values}
+
+\item{error_fun}{error function}
+
+\item{...}{additional arguments need by \code{error_fun}}
 }
 \value{
 matrix of target variables

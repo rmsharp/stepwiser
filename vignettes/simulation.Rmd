@@ -1,17 +1,32 @@
 ### Simulation constants
 
+Number of simulations
+```{r sims, echo = TRUE, include = TRUE}
+sims <- 10
+sims
+```
+
+Stepwise algorithm
+```{r directions, echo = TRUE, include = TRUE}
+## Can be any subset of c("backward", "forward", "both")
+directions <- "backward"
+directions
+```
+
+Coefficients
+```{r betas}
+betas <- c(1, 2, 3, -1, -2, -3)
+#betas <- 2
+betas
+
+```
+
 Sample sizes
 
 ```{r sample-size}
 n_values <- c(30, 60, 90, 300, 600, 900, 3000, 6000, 9000)
-n_values <- c(30, 60, 90, 300, 600, 900, 3000, 6000, 9000)
+n_values <- c(30, 60, 90, 300, 600, 900)
 n_values
-
-```
-Candidate predictor variables
-```{r predictive-variables}
-predictors <- c(12, 18, 24, 50, 100)
-predictors
 
 ```
 
@@ -19,6 +34,7 @@ from $\rho_{X_{i}X_{j}}$
 
 ```{r correlation}
 rho_values <- c(0, sqrt(0.4), sqrt(0.8))
+rho_values <- c(0, sqrt(0.1), sqrt(0.2), sqrt(0.4), sqrt(0.8))
 rho_values
 
 ```
@@ -30,14 +46,19 @@ alpha_values <- c(0.15, 1 - (1 - MFWER)^(1 / predictors), 0.05)
 alpha_values
 
 ```
-```{r betas}
-betas <- c(1, 2, 3, -1, -2, -3)
-#betas <- 2
-betas
+
+Candidate predictor variables
+```{r predictive-variables}
+predictors <- c(12, 18, 24, 50, 100)
+predictors
 
 ```
-
 ```{r reproduce-simulation}
-sim_object <- dk_sim(sims = 3, betas, n_values, rho_values, predictors, "backward", rnorm, 0, 0.2)
+sim_object <- dk_sim(sims = sims, directions = "backward", betas, n_values, rho_values, alpha_values, predictors, rnorm, 0, 0.2)
 
 ```
+
+```{r plot-data, echo = TRUE, results = "asis", include=TRUE}
+sim_df <- sim_object_to_df(sim_object)
+sim_df_alpha_015 <- sim_df[sim_df$alpha == 0.15, ]
+ggplot2::ggplot(data = sim_df, mapping = aes())

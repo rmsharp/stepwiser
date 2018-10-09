@@ -7,16 +7,17 @@
 get_predictors(y, betas, corr, p, error_fun)
 }
 \arguments{
+\item{y}{target value observations}
+
+\item{betas}{coefficients to use to make the target values}
+
 \item{corr}{correlation parameters that is a vector of length p. The X 
 columns created with a correlation parameter value greater than 0
-are authentic predictors and those with}
+are authentic predictors and those with no correlation parameter are noise}
 
 \item{p}{number of predictive variables}
 
-\item{n}{number of observations (subjects)}
-
-\item{Z}{a matrix of independent identically distributed pseudorandom 
-variates with \code{n} rows and \code{p + 1} columns.}
+\item{error_fun}{error function}
 }
 \value{
 matrix of continuous predictive variables

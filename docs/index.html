@@ -44,6 +44,21 @@
 <li>
   <a href="reference/index.html">Reference</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+<li>
+      <a href="articles/misstep.html">Do Not Misstep</a>
+    </li>
+    <li>
+      <a href="articles/simulation.html">UNKNOWN TITLE</a>
+    </li>
+  </ul>
+</li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
@@ -79,6 +94,18 @@
 <a class="sourceLine" id="cb1-2" data-line-number="2">devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"rmsharp/stepwiser"</span>)</a></code></pre></div>
 <p>All missing dependencies should be automatically installed.</p>
 <p>Find online documentation at <a href="https://rmsharp.github.io/stepwiser/" class="uri">https://rmsharp.github.io/stepwiser/</a>.</p>
+</div>
+<div id="purpose" class="section level2">
+<h2 class="hasAnchor">
+<a href="#purpose" class="anchor"></a>Purpose</h2>
+<p>The use of automated subset search algorithms for the selection of predictive variables to include in the final model is a standard practice. This package provides simulation tools (Monte Carlo) and vignettes using those tools to investigate and expose the weaknesses of using stepwise methods (backward elimination, forward selection, and stepwise algorithms) to select predictive variables.</p>
+<p>Despite extensive exposure of the characteristics and limitations of these stepwise procedures, many users of these algorithms still attribute more to the methds than they should.</p>
+<ol style="list-style-type: decimal">
+<li>Identify models with minimum residual mean square (MSRES)</li>
+<li>Importance is attached to variables as a result of whether or not they are included or remain in the model.</li>
+<li>Relative importance is associated with the order of entry or deletion.</li>
+</ol>
+<p>These beliefs are not true and they are not the reason that stepwise methods were developed. They were developed to select subset from data sets ``padded with extraneous varabiles’’. This package can be used to examine how successful stepwise methods are in attaining that goal.</p>
 </div>
 </div>
   </div>

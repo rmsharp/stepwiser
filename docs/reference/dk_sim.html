@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • stepwiser</title>
+<title>dk_sim simulation function based on a 1992 paper by Derksen and Keselman — dk_sim • stepwiser</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,7 +30,13 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="dk_sim simulation function based on a 1992 paper by Derksen and Keselman — dk_sim" />
+
+<meta property="og:description" content="Backward, forward and stepwise automated subset selection algorithms:
+Frequency of obtaining authentic and noise variables by Shelley Derksen
+H. J. Keselman, British Journal of Mathematical and Statistical Psychology
+(1992) 45, 265-282." />
+<meta name="twitter:card" content="summary" />
 
 
 
@@ -46,7 +52,7 @@
   </head>
 
   <body>
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -107,61 +113,92 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>dk_sim simulation function based on a 1992 paper by Derksen and Keselman</h1>
+    <small class="dont-index">Source: <a href='https://github.com/rmsharp/stepwiser/blob/master/R/dk_sim.R'><code>R/dk_sim.R</code></a></small>
+    <div class="hidden name"><code>dk_sim.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    
+    <p>Backward, forward and stepwise automated subset selection algorithms:
+Frequency of obtaining authentic and noise variables by Shelley Derksen
+H. J. Keselman, British Journal of Mathematical and Statistical Psychology
+(1992) 45, 265-282.</p>
+    
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
-
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="dk_sim.html">dk_sim()</a></code> </p>
-        </td>
-        <td><p>dk_sim simulation function based on a 1992 paper by Derksen and Keselman</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_predictors.html">get_predictors()</a></code> </p>
-        </td>
-        <td><p>get_predictors returns matrix of predictor variable data elements</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_targets.html">get_targets()</a></code> </p>
-        </td>
-        <td><p>get_targets returns matrix of target data elements</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="sim_object_to_df.html">sim_object_to_df()</a></code> </p>
-        </td>
-        <td><p>sim_object_to_df creates a dataframe from the simulation object created by 
-<code>dk_sim</code></p></td>
-      </tr>
-    </tbody>
+    <pre class="usage"><span class='fu'>dk_sim</span>(<span class='kw'>file</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='no'>directions</span>, <span class='no'>betas</span>, <span class='no'>n_values</span>, <span class='no'>alpha_values</span>, <span class='no'>rho_values</span>,
+  <span class='no'>predictors</span>, <span class='no'>sims</span>, <span class='no'>error_fun</span>, <span class='no'>...</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>file</th>
+      <td><p>character containing file argument to cat used to report intermediate results</p></td>
+    </tr>
+    <tr>
+      <th>directions</th>
+      <td><p>character vector with one or more of "backward", "forward",
+or "both".</p></td>
+    </tr>
+    <tr>
+      <th>betas</th>
+      <td><p>coefficients of regression</p></td>
+    </tr>
+    <tr>
+      <th>n_values</th>
+      <td><p>vector of sample sizes</p></td>
+    </tr>
+    <tr>
+      <th>alpha_values</th>
+      <td><p>vector of alpha threshold values</p></td>
+    </tr>
+    <tr>
+      <th>rho_values</th>
+      <td><p>vector of correlations between real predictors</p></td>
+    </tr>
+    <tr>
+      <th>predictors</th>
+      <td><p>vector of the number of predictor variables to include</p></td>
+    </tr>
+    <tr>
+      <th>sims</th>
+      <td><p>number of simulations</p></td>
+    </tr>
+    <tr>
+      <th>error_fun</th>
+      <td><p>function providing the error term for each row of 
+observations</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>additional arguments need by <code>error_fun</code></p></td>
+    </tr>
     </table>
-  </div>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
+    <p>object with</p>
+    
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>Need to allow add and remove thresholds instead of a single value.</p>
+    
+
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-all-functions">All functions</a></li>
-    </ul>
+      <li><a href="#arguments">Arguments</a></li>
+      
+      <li><a href="#value">Value</a></li>
+
+      <li><a href="#details">Details</a></li>
+          </ul>
+
   </div>
 </div>
 

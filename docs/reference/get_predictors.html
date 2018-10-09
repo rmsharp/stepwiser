@@ -76,6 +76,21 @@
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/misstep.html">Do Not Misstep</a>
+    </li>
+    <li>
+      <a href="../articles/simulation.html">UNKNOWN TITLE</a>
+    </li>
+  </ul>
+</li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
@@ -108,29 +123,32 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>get_predictors</span>(<span class='no'>corr</span>, <span class='no'>n</span>, <span class='no'>p</span>, <span class='no'>Z</span>)</pre>
+    <pre class="usage"><span class='fu'>get_predictors</span>(<span class='no'>y</span>, <span class='no'>betas</span>, <span class='no'>corr</span>, <span class='no'>p</span>, <span class='no'>error_fun</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
+      <th>y</th>
+      <td><p>target value observations</p></td>
+    </tr>
+    <tr>
+      <th>betas</th>
+      <td><p>coefficients to use to make the target values</p></td>
+    </tr>
+    <tr>
       <th>corr</th>
       <td><p>correlation parameters that is a vector of length p. The X 
 columns created with a correlation parameter value greater than 0
-are authentic predictors and those with</p></td>
-    </tr>
-    <tr>
-      <th>n</th>
-      <td><p>number of observations (subjects)</p></td>
+are authentic predictors and those with no correlation parameter are noise</p></td>
     </tr>
     <tr>
       <th>p</th>
       <td><p>number of predictive variables</p></td>
     </tr>
     <tr>
-      <th>Z</th>
-      <td><p>a matrix of independent identically distributed pseudorandom 
-variates with <code>n</code> rows and <code>p + 1</code> columns.</p></td>
+      <th>error_fun</th>
+      <td><p>error function</p></td>
     </tr>
     </table>
     

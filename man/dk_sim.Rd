@@ -4,9 +4,12 @@
 \alias{dk_sim}
 \title{dk_sim simulation function based on a 1992 paper by Derksen and Keselman}
 \usage{
-dk_sim(betas, n_values, rho_values, predictors, direction, error_fun, ...)
+dk_sim(sims, betas, n_values, rho_values, predictors, direction, error_fun,
+  ...)
 }
 \arguments{
+\item{sims}{number of simulations}
+
 \item{betas}{coefficients of regression}
 
 \item{n_values}{vector of sample sizes}

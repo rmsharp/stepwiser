@@ -15,7 +15,7 @@ sim_object_to_df <- function(sim_object) {
     family = sapply(sim_object, function(x) {x$family}),
     link = sapply(sim_object, function(x) {x$link}),
     authentic_min = sapply(sim_object, function(x) {x$fivenum_authentic[1]}),
-    authentic_2nd = sapply(sim_object, function(x) {x$fivenum_authentic[2]}),
+    authentic_1st = sapply(sim_object, function(x) {x$fivenum_authentic[2]}),
     authentic_median = sapply(sim_object, function(x) {x$fivenum_authentic[3]}),
     authentic_3rd = sapply(sim_object, function(x) {x$fivenum_authentic[4]}),
     authentic_max = sapply(sim_object, function(x) {x$fivenum_authentic[5]}),

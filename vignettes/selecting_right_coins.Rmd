@@ -1,0 +1,69 @@
+---
+title: "Selecting the Right Coins"
+author: "R. Mark Sharp"
+date: "10/5/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Thought Experiment
+
+Imagine that you have 50 pennies labeled 1 through 50 and you flip each one 10 times and write on each coin how many times it landed head side up.
+
+```{r coin-toss-small, echo = TRUE, include = TRUE}
+set.seed(123)
+n_coins <- 50
+tosses <- 10
+p_heads <- 0.5
+results <- rbinom(n_coins, tosses, p_heads)
+
+```
+
+I should have said, that we are looking for some lucky pennies, because I going to use the lucky pennies we find in a magic trick later. To find a lucky penny, I need to decide how many heads I need to observe to be surprised. 
+
+I am going to cheat, because I happen to remember just enough theoretical statistics to know that when you observe a group of boolean trials, you can use the binomial distribution to calculated the probability of observing any number of one type of observation (heads) out of a known number of trials. (We are not going to show the equation, but it's a combinatorial expression with factorials so it is pretty.)
+
+For the sake of brevity, I am going to tell you it takes a lot to surprise me.
+
+```{r what-is-a-surprise, echo=TRUE, include = TRUE}
+dbinom(7, tosses, p_heads)
+dbinom(8, tosses, p_heads)
+dbinom(9, tosses, p_heads)
+dbinom(10, tosses, p_heads)
+
+```
+```{r set-surprises, echo=FALSE, include = TRUE}
+surprise_threshhold <- 8
+
+```
+
+I am going to be a traditionalist here and decide I will be surprised if there are `r surprise_threshhold` or more heads out of `r tosses` tosses.
+
+```{r find-surprises, echo=TRUE, include = TRUE}
+surprise_threshhold <- 8
+dbinom(surprise_threshhold, tosses, p_heads) 
+picks <- seq_along(results)[results >= surprise_threshhold]
+length(picks)
+picks
+results[results >= surprise_threshhold]
+
+```
+
+Let's examine what we have done and what we learned about these pennies through this experiment.
+
+1.  I am pleased that I found so many valuable pennies out of `r n_coins`.
+2.  If I want to know probability of head being tossed for each valuable coin, I just look at the count of heads and divide by the number of tosses. Fortunately, in this case I just need to move the decimal place one position to the left to get my estimate.
+
+Now as statisticians, `r tosses` is not a big enough sample for a good estimate so let's make it bigger.
+
+```{r lot-of-tosses}
+tosses <- 1000
+pbinom(800, tosses, 0.5, lower.tail = FALSE)
+pbinom(550, tosses, 0.5, lower.tail = FALSE)
+pbinom(526, tosses, 0.5, lower.tail = FALSE)
+
+```
+

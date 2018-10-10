@@ -1,12 +1,15 @@
 ### Simulation constants
 
 ```{r file, echo = TRUE, include = TRUE}
-file <- "dk_sim.csv"
+library(rmsutilityr)
+library(stepwiser)
+file <- get_dated_filename("dk_sim.csv")
+file
+
 ```
 
 Number of simulations
 ```{r sims, echo = TRUE, include = TRUE}
-library(stepwiser)
 sims <- 10
 sims
 ```
@@ -14,12 +17,12 @@ sims
 Stepwise algorithm
 ```{r directions, echo = TRUE, include = TRUE}
 ## Can be any subset of c("backward", "forward", "both")
-directions <- "backward"
+directions <- "forward"
 directions
 ```
 
 Coefficients
-```{r betas}
+```{r betas, echo = TRUE, include = TRUE}
 betas <- c(1, 2, 3, -1, -2, -3)
 #betas <- 2
 betas
@@ -28,43 +31,147 @@ betas
 
 Sample sizes
 
-```{r sample-size}
+```{r sample-size, echo = TRUE, include = TRUE}
 n_values <- c(30, 60, 90, 300, 600, 900, 3000, 6000, 9000)
-n_values <- c(30, 60, 90, 300, 600, 900)
+#n_values <- c(30, 60, 90, 300, 600, 900)
 n_values
 
 ```
 
 from $\rho_{X_{i}X_{j}}$
 
-```{r correlation}
+```{r correlation, echo = TRUE, include = TRUE}
 rho_values <- c(0, sqrt(0.4), sqrt(0.8))
 rho_values <- c(0, sqrt(0.1), sqrt(0.2), sqrt(0.4), sqrt(0.8))
 rho_values
 
 ```
 Candidate predictor variables
-```{r predictive-variables}
+```{r predictive-variables, echo = TRUE, include = TRUE}
 predictors <- c(12, 18, 24, 50, 100)
 predictors
 
 ```
 
 $\alpha$
-```{r alpha}
+```{r alpha, echo = TRUE, include = TRUE}
 MFWER <- 0.15
 
-alpha_values <- c(0.15, 1 - (1 - MFWER)^(1 / predictors), 0.05)
+alpha_values <- c(0.5, 0.15, 1 - (1 - MFWER)^(1 / predictors), 0.05)
 alpha_values
 
 ```
 
-```{r reproduce-simulation}
-sim_object <- dk_sim(file = file, directions = "backward", betas, n_values, alpha_values, rho_values, predictors, sims = sims, rnorm, 0, 0.2)
+```{r reproduce-simulation, echo = TRUE, include = TRUE}
+sim_object <- dk_sim(file = file, directions = directions, betas, n_values, alpha_values, rho_values, predictors, sims = sims, rnorm, 0, 0.2)
 
 ```
 
+1.  Plot effect of number of observations by number of predictors on number of noise variables
+2.  Plot effect of number of observations by number of predictors on number of actual variables
+3.  
 ```{r plot-data, echo = TRUE, results = "asis", include=TRUE}
-sim_df <- sim_object_to_df(sim_object)
-sim_df_alpha_015 <- sim_df[sim_df$alpha == 0.15, ]
-ggplot2::ggplot(data = sim_df, mapping = aes())
+library("reshape2")
+library("ggplot2")
+backward_sim_object <- sim_object
+save(backward_sim_object, file = "../data/backward_sim_object.RData")
+sim_wide_df <- sim_object_to_df(sim_object)
+sim_wide_median_df <- 
+  sim_wide_df[ , !names(sim_wide_df) %in% 
+                 c("family", "link", "sims", "noise_min", "noise_1st", "noise_3rd", "noise_max",
+                   "authentic_min", "authentic_1st", "authentic_3rd", "authentic_max")]
+sim_long_median_df <- melt(sim_wide_df, id.vars = c("alpha", "n", "rho", "p"),
+                    measure.vars = c("authentic_median", "noise_median"),
+                    variable.name = "predictor_type",
+                    value.name = "count", factorsAsStrings = FALSE)
+sim_long_df_a5_rho0 <- sim_long_median_df[sim_long_median_df$alpha == 0.5 &
+                                           sim_long_median_df$rho == 0, ]
+sim_long_df_a5_rho0_noise <- 
+  sim_long_df_a5_rho0[sim_long_df_a5_rho0$predictor_type == "noise_median", ]
+sim_long_df_a5_rho0_authentic <- 
+  sim_long_df_a5_rho0[sim_long_df_a5_rho0$predictor_type == "authentic_median", ]
+
+ggplot(data=sim_long_df_a5_rho0_noise,
+       aes(x=p, y=count, colour=n)) +
+       geom_line()
+ggplot(data=sim_long_df_a5_rho0_authentic,
+       aes(x=p, y=count, colour=n)) +
+       geom_line()
+
+sim_long_df_a15_rho0 <- sim_long_median_df[sim_long_median_df$alpha == 0.15 &
+                                           sim_long_median_df$rho == 0, ]
+sim_long_df_a15_rho0_noise <- 
+  sim_long_df_a15_rho0[sim_long_df_a15_rho0$predictor_type == "noise_median", ]
+sim_long_df_a15_rho0_authentic <- 
+  sim_long_df_a15_rho0[sim_long_df_a15_rho0$predictor_type == "authentic_median", ]
+
+ggplot(data=sim_long_df_a15_rho0_noise,
+       aes(x=p, y=count, colour=n)) +
+       geom_line()
+ggplot(data=sim_long_df_a15_rho0_authentic,
+       aes(x=p, y=count, colour=n)) +
+       geom_line()
+table(sim_long_median_df$alpha)
+table(sim_long_median_df$rho)
+
+sim_long_df_a0016_rho0 <- sim_long_median_df[sim_long_median_df$alpha < 0.0017 &
+                                           sim_long_median_df$rho == 0, ]
+sim_long_df_a0016_rho0_noise <- 
+  sim_long_df_a0016_rho0[sim_long_df_a0016_rho0$predictor_type == "noise_median", ]
+sim_long_df_a0016_rho0_authentic <- 
+  sim_long_df_a0016_rho0[sim_long_df_a0016_rho0$predictor_type == "authentic_median", ]
+
+ggplot(data=sim_long_df_a0016_rho0_noise,
+       aes(x=p, y=count, colour=n)) +
+       geom_line()
+ggplot(data=sim_long_df_a0016_rho0_authentic,
+       aes(x=p, y=count, colour=n)) +
+       geom_line()
+####### rho = 0.316
+sim_long_df_a5_rho3 <- sim_long_median_df[sim_long_median_df$alpha == 0.5 &
+                                           sim_long_median_df$rho > 0.3 &
+                                            sim_long_median_df$rho < 0.4, ]
+sim_long_df_a5_rho3_noise <- 
+  sim_long_df_a5_rho3[sim_long_df_a5_rho3$predictor_type == "noise_median", ]
+sim_long_df_a5_rho3_authentic <- 
+  sim_long_df_a5_rho3[sim_long_df_a5_rho3$predictor_type == "authentic_median", ]
+
+ggplot(data=sim_long_df_a5_rho3_noise,
+       aes(x=p, y=count, colour=n)) +
+       geom_line()
+ggplot(data=sim_long_df_a5_rho3_authentic,
+       aes(x=p, y=count, colour=n)) +
+       geom_line()
+
+sim_long_df_a15_rho3 <- sim_long_median_df[sim_long_median_df$alpha == 0.15 &
+                                           sim_long_median_df$rho == 0, ]
+sim_long_df_a15_rho3_noise <- 
+  sim_long_df_a15_rho3[sim_long_df_a15_rho3$predictor_type == "noise_median", ]
+sim_long_df_a15_rho3_authentic <- 
+  sim_long_df_a15_rho3[sim_long_df_a15_rho3$predictor_type == "authentic_median", ]
+
+ggplot(data=sim_long_df_a15_rho3_noise,
+       aes(x=p, y=count, colour=n)) +
+       geom_line()
+ggplot(data=sim_long_df_a15_rho3_authentic,
+       aes(x=p, y=count, colour=n)) +
+       geom_line()
+table(sim_long_median_df$alpha)
+table(sim_long_median_df$rho)
+
+sim_long_df_a0016_rho3 <- sim_long_median_df[sim_long_median_df$alpha < 0.0017 &
+                                           sim_long_median_df$rho == 0, ]
+sim_long_df_a0016_rho3_noise <- 
+  sim_long_df_a0016_rho3[sim_long_df_a0016_rho3$predictor_type == "noise_median", ]
+sim_long_df_a0016_rho3_authentic <- 
+  sim_long_df_a0016_rho3[sim_long_df_a0016_rho3$predictor_type == "authentic_median", ]
+
+ggplot(data=sim_long_df_a0016_rho3_noise,
+       aes(x=p, y=count, colour=n)) +
+       geom_line()
+ggplot(data=sim_long_df_a0016_rho3_authentic,
+       aes(x=p, y=count, colour=n)) +
+       geom_line()
+
+
+```

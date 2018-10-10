@@ -1,9 +1,10 @@
 ---
 title: "Lucky Penny"
 author: "R. Mark Sharp"
-date: "10/9/2018"
+date: "10/10/2018"
 output: 
    ioslides_presentation:
+     widescreen: true
      incremental: true
      fig_width: 6
      fig_height: 5
@@ -17,7 +18,9 @@ knitr::opts_chunk$set(echo = TRUE, include = TRUE)
 
 # Thought Experiment | Find some lucky pennies
 <div class = "notes">
-Imagine that you have 50 pennies labeled 1 through 50 and you flip each one 10 times and write on each coin how many times it landed head side up.
+Imagine that you have 50 pennies labeled 1 through 50 and 
+you flip each one 10 times and write on each coin how many 
+times it landed head side up.
 
 </div>
 
@@ -35,11 +38,21 @@ results <- rbinom(n_coins, tosses, p_heads)
 
 <div class="notes">
 
-I should have said, that we are looking for some lucky pennies, because I going to use the lucky pennies we find in a magic trick later. To find a lucky penny, I need to decide how many heads I need to observe to be surprised. 
+I should have said, that we are looking for some lucky pennies,
+because I going to use the lucky pennies we find in a magic 
+trick later. To find a lucky penny, I need to decide how many 
+heads I need to observe to be surprised. 
 
-I am going to cheat, because I happen to remember just enough theoretical statistics to know that when you observe a group of boolean trials, you can use the binomial distribution to calculated the probability of observing any number of one type of observation (heads) out of a known number of trials. (We are not going to show the equation, but it's a combinatorial expression with factorials so it is pretty.)
+I am going to cheat, because I happen to remember just enough 
+theoretical statistics to know that when you observe a group 
+of boolean trials, you can use the binomial distribution to 
+calculated the probability of observing any number of one type 
+of observation (heads) out of a known number of trials. 
+(We are not going to show the equation, but it's a 
+combinatorial expression with factorials so it is pretty.)
 
-For the sake of brevity, I am going to tell you it takes a lot to surprise me.
+For the sake of brevity, I am going to tell you it takes 
+a lot to surprise me.
 
 
 </div>
@@ -64,14 +77,15 @@ dbinom(10, tosses, p_heads)
 
 ## This Is Surprising Enough (I think ??)
 
-```{r set-surprises, echo=FALSE, include = TRUE}
+```{r set-surprises, echo=TRUE, include = TRUE}
 surprise_threshhold <- 8
 
 ```
 
 <div class="notes">
 
-I am going to be a traditionalist here and decide I will be surprised if there are `r surprise_threshhold` or more heads out of `r tosses` tosses.
+I am going to be a traditionalist here and decide I will be surprised if there 
+are `r surprise_threshhold` or more heads out of `r tosses` tosses.
 </div>
 
 ## Being the Geeks We Are {.build}
@@ -86,12 +100,14 @@ results[results >= surprise_threshhold]
 
 ## What Did We Just Accomplish? {.build}
 -  I am pleased that I found so many valuable pennies out of `r n_coins`.
--  I have thoughtfully recorded how many heads I observed on each lucky penny so I do not need to do all that sampling stuff again.
+-  I have thoughtfully recorded how many heads I observed on each lucky penny 
+so I do not need to do all that sampling stuff again.
 
 
 
 <div class="notes">
-I can confidently carry these pennies into my magic show knowing they will continue to perform as well there as they did here.
+I can confidently carry these pennies into my magic show knowing they will 
+continue to perform as well there as they did here.
 
 </div>
 
@@ -99,7 +115,8 @@ I can confidently carry these pennies into my magic show knowing they will conti
 - Root cause of where stepwise methods go wrong
 
 <div class="notes">
-Now as statisticians, `r tosses` is not a big enough sample for a good estimate so let's make it bigger.
+Now as statisticians, `r tosses` is not a big enough sample for a good 
+estimate so let's make it bigger.
 </div>
 
 
@@ -119,7 +136,8 @@ Now as statisticians, `r tosses` is not a big enough sample for a good estimate 
 - Backward Selection
   - Starts with full model
   - Predictors are removed one by one based on the least effect ($F$ statistic)
-  - Stop when all remaining predictors have F statistics at least as large as a __stay__ threshold
+  - Stop when all remaining predictors have F statistics at least as large 
+  as a __stay__ threshold
 
 ## Stepwise Methods {.build}
 
@@ -131,7 +149,8 @@ Now as statisticians, `r tosses` is not a big enough sample for a good estimate 
 ## Statistical Issues {.build}
 
 - Yields $R^2$ values that are biased to be high
-- Based on methods (e.g., $F$ tests for nested models) intended to be used to test prespecified hypotheses
+- Based on methods (e.g., $F$ tests for nested models) intended to be used 
+to test prespecified hypotheses
 - $F$ and $\chi^2$ tests do not have their claimed distributions
 - Yields $p$-values that do not have the proper meaning
 - Gives biased regression coefficients that need shrinkage
@@ -139,16 +158,19 @@ Now as statisticians, `r tosses` is not a big enough sample for a good estimate 
 ## Effects Demonstrated in 1970's and 1980's {.build}
 
 - Has severe problems in the presence of collinearity
-- Does not select model having mean residual squared error
-- Users often attribute relative importance to order of when variables go in and out of model
+- Does not select model having minumum mean residual squared error
+- Users often attribute relative importance to order of when variables go 
+in and out of model
 
 ## Effects Demonstrated in 1992 {.build}
 
-- Number of candidate predictor variables affected the number of noise variables that gained entry to the model
+- Number of candidate predictor variables affected the number of noise 
+variables that gained entry to the model
 
-## Effects Demonstrated in 1992 {.build}
+## Effects Demonstrated in 1992
 
-- Number of candidate predictor variables affected the number of noise variables that gained entry to the model
+- Number of candidate predictor variables affected the number of noise 
+variables that gained entry to the model
 
    Predictors | Noise  | %Noise
    -----------|--------|-------
@@ -157,9 +179,10 @@ Now as statisticians, `r tosses` is not a big enough sample for a good estimate 
    24         | 1.44   | 46
    
    
-## Effects Demonstrated in 1992 {.build}
+## Effects Demonstrated in 1992
 
-- Number of candidate predictor variables affected the number of noise variables that gained entry to the model
+- Number of candidate predictor variables affected the number of noise 
+variables that gained entry to the model
 
    - Effect of multicollinearity (correlation of 0.4)
 
@@ -169,9 +192,10 @@ Now as statisticians, `r tosses` is not a big enough sample for a good estimate 
    18         | 0.93   | 59
    24         | 1.36   | 62
 
-## Effects Demonstrated in 1992 {.build}
+## Effects Demonstrated in 1992
 
-- Number of candidate predictor variables affected the number of noise variables that gained entry to the model
+- Number of candidate predictor variables affected the number of noise 
+variables that gained entry to the model
 
    Predictors | Actual | Noise  | %Noise
    -----------|--------|--------|-------
@@ -180,9 +204,10 @@ Now as statisticians, `r tosses` is not a big enough sample for a good estimate 
    24         | 1.66   | 1.44   | 46
    
    
-## Effects Demonstrated in 1992 {.build}
+## Effects Demonstrated in 1992
 
-- Number of candidate predictor variables affected the number of noise variables that gained entry to the model
+- Number of candidate predictor variables affected the number of noise 
+variables that gained entry to the model
 
    - Effect of multicollinearity (correlation of 0.4)
 
@@ -194,16 +219,15 @@ Now as statisticians, `r tosses` is not a big enough sample for a good estimate 
 
 ## Effects Demonstrated in 1992 {.build}
 
-- Number of candidate predictor variables affected the number of noise variables that gained entry to the model
+- Number of candidate predictor variables affected the number of noise 
+variables that gained entry to the model
 - Authentic variables selected less than $0.5$ the time
 - Noise variables selected $0.20$ to $0.74$ of the time
 - Increasing sample size does not help much
-- $R^2 \propto$ number candidate predictor variables and not the number of final predictor variables
-- Method yields confidence intervals for effects and predicted values that are falsely narrow
-
-## What If You Have Great Data
-
-![Actual predictor variables versus Y](images/actual_vs_Y.png)
+- $R^2 \propto$ number candidate predictor variables and not the number
+of final predictor variables
+- Method yields confidence intervals for effects and predicted values 
+that are falsely narrow
 
 ## What If You Have Great Data
 
@@ -241,8 +265,16 @@ Predictors | Noise $\alpha = 0.0016$ |Noise $\alpha = 0.15$
 ## Options {.build}
 
 - Gold standard: know your domain, pick predictive variables, keep them all
-- Least Absolute Shrinkage and Selection Operator (LASSO) or elastic nets if multicollinearity is a possibility.
+- Least Absolute Shrinkage and Selection Operator (LASSO) or elastic nets 
+if multicollinearity is a possibility.
 
+## Lasso
+
+$min||\mathbf{y - X\beta}||^2$ subject to $\sum\limits_{j=1}^{m} |\beta_{j}| \leq t$
+
+## Elastic Net
+
+$min||\mathbf{y - X\beta}||^2$ subject to $\sum\limits_{j=1}^{m} |\beta_{j}| \leq t_1$,  $\sum\limits_{j=1}^{m} \beta_{j}^{2} \leq t_2$
 
 
 

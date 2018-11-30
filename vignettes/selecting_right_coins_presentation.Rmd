@@ -60,10 +60,21 @@ Let's examine what we have done and what we learned about these pennies through 
 Now as statisticians, `r tosses` is not a big enough sample for a good estimate so let's make it bigger.
 
 ```{r lot-of-tosses}
-tosses <- 1000
-pbinom(800, tosses, 0.5, lower.tail = FALSE)
-pbinom(550, tosses, 0.5, lower.tail = FALSE)
-pbinom(526, tosses, 0.5, lower.tail = FALSE)
+tosses_large <- 1000
+pbinom(800, tosses_large, 0.5, lower.tail = FALSE)
+pbinom(550, tosses_large, 0.5, lower.tail = FALSE)
+pbinom(525, tosses_large, 0.5, lower.tail = FALSE)
+pbinom(526, tosses_large, 0.5, lower.tail = FALSE)
 
 ```
 
+```{r find-surprises-more-data, echo=TRUE, include = TRUE}
+surprise_threshhold_large <- 526
+results_large <- rbinom(n_coins, tosses_large, p_heads)
+dbinom(surprise_threshhold_large, tosses_large, p_heads) 
+picks_large <- seq_along(results_large)[results_large >= surprise_threshhold_large]
+length(picks_large)
+picks_large
+results_large[results_large >= surprise_threshhold_large]
+
+```

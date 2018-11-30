@@ -26,9 +26,11 @@
 #' @importFrom stats glm
 #' @importFrom stats rnorm
 #' @importFrom utils flush.console
+#' @import glmnet
 #' @export
-dk_sim <- function(file = "", directions, betas, n_values, alpha_values, 
-                   rho_values, predictors, sims, error_fun, ...) {
+dk_and_net_sim <- function(file = "", directions, betas, n_values, 
+                           alpha_values, rho_values, predictors, net_alpha = 100,
+                           weight = 1, nlambda = 100, sims, error_fun, ...) {
   rows <- length(alpha_values) *
           length(n_values) *
           length(rho_values) *
@@ -55,10 +57,13 @@ dk_sim <- function(file = "", directions, betas, n_values, alpha_values,
                 rnorm(n, sample(1:10, 1), sample(1:10, 1))
               }
               X <- get_predictors(y, betas, corr, p, error_fun)
-              X <- as.data.frame(X, drop = FALSE)
-              names(X) <- paste0("X_", 1:ncol(X))
-              data <- data.frame(y = y, X)
+              data <- as.data.frame(X, drop = FALSE)
+              names(data) <- paste0("X_", 1:ncol(data))
+              data <- data.frame(y = y, data)
               fit <- glm(y ~ ., data = data)
+              fit_net <- glmnet(X, y, family = "gaussian", 
+                                weights = rep(weight, nrow(X)),
+                                alpha = net_alpha)
               sink("/dev/null")
               step <- invisible(stepAIC(fit, direction = direction))
               sink()

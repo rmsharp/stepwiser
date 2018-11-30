@@ -32,8 +32,8 @@ betas
 Sample sizes
 
 ```{r sample-size, echo = TRUE, include = TRUE}
-n_values <- c(30, 60, 90, 300, 600, 900, 3000, 6000, 9000)
-#n_values <- c(30, 60, 90, 300, 600, 900)
+#n_values <- c(30, 60, 90, 300, 600, 900, 3000, 6000, 9000)
+n_values <- c(30, 60, 90)
 n_values
 
 ```
@@ -42,13 +42,14 @@ from $\rho_{X_{i}X_{j}}$
 
 ```{r correlation, echo = TRUE, include = TRUE}
 rho_values <- c(0, sqrt(0.4), sqrt(0.8))
-rho_values <- c(0, sqrt(0.1), sqrt(0.2), sqrt(0.4), sqrt(0.8))
+rho_values <- c(0, sqrt(0.1), sqrt(0.2), sqrt(0.4))
 rho_values
 
 ```
 Candidate predictor variables
 ```{r predictive-variables, echo = TRUE, include = TRUE}
 predictors <- c(12, 18, 24, 50, 100)
+predictors <- c(12, 18, 24)
 predictors
 
 ```
@@ -73,8 +74,8 @@ sim_object <- dk_sim(file = file, directions = directions, betas, n_values, alph
 ```{r plot-data, echo = TRUE, results = "asis", include=TRUE}
 library("reshape2")
 library("ggplot2")
-backward_sim_object <- sim_object
-save(backward_sim_object, file = "../data/backward_sim_object.RData")
+#backward_sim_object <- sim_object
+#save(backward_sim_object, file = "../data/backward_sim_object.RData")
 sim_wide_df <- sim_object_to_df(sim_object)
 sim_wide_median_df <- 
   sim_wide_df[ , !names(sim_wide_df) %in% 

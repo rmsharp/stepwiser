@@ -5,8 +5,8 @@
 \title{dk_sim simulation function based on a 1992 paper by Derksen and Keselman}
 \usage{
 dk_and_net_sim(file = "", directions, betas, n_values, alpha_values,
-  rho_values, predictors, net_alpha = 100, weight = 1, nlambda = 100,
-  sims, error_fun, ...)
+  rho_values, predictors, weight = 1, nlambda = 100, sims, error_fun,
+  ...)
 }
 \arguments{
 \item{file}{character containing file argument to cat used to report intermediate results}
@@ -23,6 +23,11 @@ or "both".}
 \item{rho_values}{vector of correlations between real predictors}
 
 \item{predictors}{vector of the number of predictor variables to include}
+
+\item{weight}{observation weights. Can be total counts if responses are 
+proportion matrices. Default is 1 for each observation}
+
+\item{nlambda}{The number of lambda values - default is 100.}
 
 \item{sims}{number of simulations}
 

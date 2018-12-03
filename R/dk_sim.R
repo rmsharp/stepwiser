@@ -59,9 +59,9 @@ dk_sim <- function(file = "", directions, betas, n_values, alpha_values,
               names(X) <- paste0("X_", 1:ncol(X))
               data <- data.frame(y = y, X)
               fit <- glm(y ~ ., data = data)
-              sink("/dev/null")
+              #sink("/dev/null")
               step <- invisible(stepAIC(fit, direction = direction))
-              sink()
+              #sink()
               #estimates <- invisible(summary(step))[[12]] # don't need
               r_row <- r_row + 1
               results[[r_row]] <- list(coef_names = names(step$coefficients))
@@ -80,17 +80,17 @@ dk_sim <- function(file = "", directions, betas, n_values, alpha_values,
               fivenum_authentic = fivenum_authentic, 
               fivenum_noise = fivenum_noise,
               sims = sims)
-            cat(file = file, paste0("row ", s_row, " of ", rows, ": direction = ", 
-                                    direction, ", alpha = ", signif(alpha, digits = 3),
-                                    ", n = ", n, ", rho = ", round(rho, 2), 
-                                    ", p = ", p, ", family = ", step$family$family, 
-                                    ", link = ", step$family$link,
-                                    ", fivenum_authentic[min, median, max] = ", 
-                                    fivenum_authentic[1], ", ", fivenum_authentic[3], ", ", fivenum_authentic[5],
-                                    ", fivenum_noise[min, median, max] = ", 
-                                    fivenum_noise[1], ", ", fivenum_noise[3], ", ", fivenum_noise[5], 
-                                    ", sims = ", sims, ".\n"), append = TRUE)
-            flush.console()
+            # cat(file = file, paste0("row ", s_row, " of ", rows, ": direction = ", 
+            #                         direction, ", alpha = ", signif(alpha, digits = 3),
+            #                         ", n = ", n, ", rho = ", round(rho, 2), 
+            #                         ", p = ", p, ", family = ", step$family$family, 
+            #                         ", link = ", step$family$link,
+            #                         ", fivenum_authentic[min, median, max] = ", 
+            #                         fivenum_authentic[1], ", ", fivenum_authentic[3], ", ", fivenum_authentic[5],
+            #                         ", fivenum_noise[min, median, max] = ", 
+            #                         fivenum_noise[1], ", ", fivenum_noise[3], ", ", fivenum_noise[5], 
+            #                         ", sims = ", sims, ".\n"), append = TRUE)
+            #flush.console()
           }
         }
       }

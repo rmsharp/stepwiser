@@ -1,8 +1,9 @@
 ### Simulation constants
 
 ```{r file, echo = TRUE, include = TRUE}
-library(rmsutilityr)
-library(stepwiser)
+pkgs <- list("rmsutilityr", "glmnet", "doParallel", "foreach", "pROC", "stepwiser")
+lapply(pkgs, library, character.only = TRUE)
+registerDoParallel(cores = 4)
 file <- get_dated_filename("dk_sim.csv")
 file
 
@@ -42,7 +43,7 @@ from $\rho_{X_{i}X_{j}}$
 
 ```{r correlation, echo = TRUE, include = TRUE}
 rho_values <- c(0, sqrt(0.4), sqrt(0.8))
-rho_values <- c(0, sqrt(0.1), sqrt(0.2), sqrt(0.4))
+#rho_values <- c(0, sqrt(0.1), sqrt(0.2), sqrt(0.4))
 rho_values
 
 ```
@@ -64,7 +65,14 @@ alpha_values
 ```
 
 ```{r reproduce-simulation, echo = TRUE, include = TRUE}
-sim_object <- dk_sim(file = file, directions = directions, betas, n_values, alpha_values, rho_values, predictors, sims = sims, rnorm, 0, 0.2)
+#sim_object <- dk_sim(file = file, directions = directions, betas, n_values, alpha_values, rho_values, predictors, sims = sims, rnorm, 0, 0.2)
+
+weight <- 1
+nlambda = 100
+sim_object <- dk_and_net_sim(file = file, directions = directions, betas, 
+                             n_values, alpha_values, rho_values, predictors, 
+                             weight = weight, nlambda = nlambda,
+                             sims = sims, rnorm, 0, 0.2)
 
 ```
 
@@ -77,102 +85,105 @@ library("ggplot2")
 #backward_sim_object <- sim_object
 #save(backward_sim_object, file = "../data/backward_sim_object.RData")
 sim_wide_df <- sim_object_to_df(sim_object)
-sim_wide_median_df <- 
-  sim_wide_df[ , !names(sim_wide_df) %in% 
-                 c("family", "link", "sims", "noise_min", "noise_1st", "noise_3rd", "noise_max",
-                   "authentic_min", "authentic_1st", "authentic_3rd", "authentic_max")]
-sim_long_median_df <- melt(sim_wide_df, id.vars = c("alpha", "n", "rho", "p"),
-                    measure.vars = c("authentic_median", "noise_median"),
-                    variable.name = "predictor_type",
-                    value.name = "count", factorsAsStrings = FALSE)
-sim_long_df_a5_rho0 <- sim_long_median_df[sim_long_median_df$alpha == 0.5 &
-                                           sim_long_median_df$rho == 0, ]
-sim_long_df_a5_rho0_noise <- 
-  sim_long_df_a5_rho0[sim_long_df_a5_rho0$predictor_type == "noise_median", ]
-sim_long_df_a5_rho0_authentic <- 
-  sim_long_df_a5_rho0[sim_long_df_a5_rho0$predictor_type == "authentic_median", ]
-
-ggplot(data=sim_long_df_a5_rho0_noise,
-       aes(x=p, y=count, colour=n)) +
-       geom_line()
-ggplot(data=sim_long_df_a5_rho0_authentic,
-       aes(x=p, y=count, colour=n)) +
-       geom_line()
-
-sim_long_df_a15_rho0 <- sim_long_median_df[sim_long_median_df$alpha == 0.15 &
-                                           sim_long_median_df$rho == 0, ]
-sim_long_df_a15_rho0_noise <- 
-  sim_long_df_a15_rho0[sim_long_df_a15_rho0$predictor_type == "noise_median", ]
-sim_long_df_a15_rho0_authentic <- 
-  sim_long_df_a15_rho0[sim_long_df_a15_rho0$predictor_type == "authentic_median", ]
-
-ggplot(data=sim_long_df_a15_rho0_noise,
-       aes(x=p, y=count, colour=n)) +
-       geom_line()
-ggplot(data=sim_long_df_a15_rho0_authentic,
-       aes(x=p, y=count, colour=n)) +
-       geom_line()
-table(sim_long_median_df$alpha)
-table(sim_long_median_df$rho)
-
-sim_long_df_a0016_rho0 <- sim_long_median_df[sim_long_median_df$alpha < 0.0017 &
-                                           sim_long_median_df$rho == 0, ]
-sim_long_df_a0016_rho0_noise <- 
-  sim_long_df_a0016_rho0[sim_long_df_a0016_rho0$predictor_type == "noise_median", ]
-sim_long_df_a0016_rho0_authentic <- 
-  sim_long_df_a0016_rho0[sim_long_df_a0016_rho0$predictor_type == "authentic_median", ]
-
-ggplot(data=sim_long_df_a0016_rho0_noise,
-       aes(x=p, y=count, colour=n)) +
-       geom_line()
-ggplot(data=sim_long_df_a0016_rho0_authentic,
-       aes(x=p, y=count, colour=n)) +
-       geom_line()
-####### rho = 0.316
-sim_long_df_a5_rho3 <- sim_long_median_df[sim_long_median_df$alpha == 0.5 &
-                                           sim_long_median_df$rho > 0.3 &
-                                            sim_long_median_df$rho < 0.4, ]
-sim_long_df_a5_rho3_noise <- 
-  sim_long_df_a5_rho3[sim_long_df_a5_rho3$predictor_type == "noise_median", ]
-sim_long_df_a5_rho3_authentic <- 
-  sim_long_df_a5_rho3[sim_long_df_a5_rho3$predictor_type == "authentic_median", ]
-
-ggplot(data=sim_long_df_a5_rho3_noise,
-       aes(x=p, y=count, colour=n)) +
-       geom_line()
-ggplot(data=sim_long_df_a5_rho3_authentic,
-       aes(x=p, y=count, colour=n)) +
-       geom_line()
-
-sim_long_df_a15_rho3 <- sim_long_median_df[sim_long_median_df$alpha == 0.15 &
-                                           sim_long_median_df$rho == 0, ]
-sim_long_df_a15_rho3_noise <- 
-  sim_long_df_a15_rho3[sim_long_df_a15_rho3$predictor_type == "noise_median", ]
-sim_long_df_a15_rho3_authentic <- 
-  sim_long_df_a15_rho3[sim_long_df_a15_rho3$predictor_type == "authentic_median", ]
-
-ggplot(data=sim_long_df_a15_rho3_noise,
-       aes(x=p, y=count, colour=n)) +
-       geom_line()
-ggplot(data=sim_long_df_a15_rho3_authentic,
-       aes(x=p, y=count, colour=n)) +
-       geom_line()
-table(sim_long_median_df$alpha)
-table(sim_long_median_df$rho)
-
-sim_long_df_a0016_rho3 <- sim_long_median_df[sim_long_median_df$alpha < 0.0017 &
-                                           sim_long_median_df$rho == 0, ]
-sim_long_df_a0016_rho3_noise <- 
-  sim_long_df_a0016_rho3[sim_long_df_a0016_rho3$predictor_type == "noise_median", ]
-sim_long_df_a0016_rho3_authentic <- 
-  sim_long_df_a0016_rho3[sim_long_df_a0016_rho3$predictor_type == "authentic_median", ]
-
-ggplot(data=sim_long_df_a0016_rho3_noise,
-       aes(x=p, y=count, colour=n)) +
-       geom_line()
-ggplot(data=sim_long_df_a0016_rho3_authentic,
-       aes(x=p, y=count, colour=n)) +
-       geom_line()
+# sim_wide_median_df <- 
+#   sim_wide_df[ , !names(sim_wide_df) %in% 
+#                  c("family", "link", "sims", "noise_min_step", "noise_1st_step", "noise_3rd_step", "noise_max_step",
+#                    "authentic_min_step", "authentic_1st_step", "authentic_3rd_step", "authentic_max_step", "noise_min_lasso", "noise_1st_lasso", "noise_3rd_lasso", "noise_max_lasso",
+#                    "authentic_min_lasso", "authentic_1st_lasso", "authentic_3rd_lasso", "authentic_max_lasso", "noise_min_ridge", "noise_1st_ridge", "noise_3rd_ridge", "noise_max_ridge",
+#                    "authentic_min_ridge", "authentic_1st_ridge", "authentic_3rd_ridge", "authentic_max_ridge", "noise_min_net", "noise_1st_net", "noise_3rd_net", "noise_max_net",
+#                    "authentic_min_net", "authentic_1st_net", "authentic_3rd_net", "authentic_max_net")]
+# sim_long_median_df <- melt(sim_wide_df, id.vars = c("alpha", "n", "rho", "p"),
+#                     measure.vars = c("authentic_median", "noise_median"),
+#                     variable.name = "predictor_type",
+#                     value.name = "count", factorsAsStrings = FALSE)
+# sim_long_df_a5_rho0 <- sim_long_median_df[sim_long_median_df$alpha == 0.5 &
+#                                            sim_long_median_df$rho == 0, ]
+# sim_long_df_a5_rho0_noise <- 
+#   sim_long_df_a5_rho0[sim_long_df_a5_rho0$predictor_type == "noise_median", ]
+# sim_long_df_a5_rho0_authentic <- 
+#   sim_long_df_a5_rho0[sim_long_df_a5_rho0$predictor_type == "authentic_median", ]
+# 
+# ggplot(data=sim_long_df_a5_rho0_noise,
+#        aes(x=p, y=count, colour=n)) +
+#        geom_line()
+# ggplot(data=sim_long_df_a5_rho0_authentic,
+#        aes(x=p, y=count, colour=n)) +
+#        geom_line()
+# 
+# sim_long_df_a15_rho0 <- sim_long_median_df[sim_long_median_df$alpha == 0.15 &
+#                                            sim_long_median_df$rho == 0, ]
+# sim_long_df_a15_rho0_noise <- 
+#   sim_long_df_a15_rho0[sim_long_df_a15_rho0$predictor_type == "noise_median", ]
+# sim_long_df_a15_rho0_authentic <- 
+#   sim_long_df_a15_rho0[sim_long_df_a15_rho0$predictor_type == "authentic_median", ]
+# 
+# ggplot(data=sim_long_df_a15_rho0_noise,
+#        aes(x=p, y=count, colour=n)) +
+#        geom_line()
+# ggplot(data=sim_long_df_a15_rho0_authentic,
+#        aes(x=p, y=count, colour=n)) +
+#        geom_line()
+# table(sim_long_median_df$alpha)
+# table(sim_long_median_df$rho)
+# 
+# sim_long_df_a0016_rho0 <- sim_long_median_df[sim_long_median_df$alpha < 0.0017 &
+#                                            sim_long_median_df$rho == 0, ]
+# sim_long_df_a0016_rho0_noise <- 
+#   sim_long_df_a0016_rho0[sim_long_df_a0016_rho0$predictor_type == "noise_median", ]
+# sim_long_df_a0016_rho0_authentic <- 
+#   sim_long_df_a0016_rho0[sim_long_df_a0016_rho0$predictor_type == "authentic_median", ]
+# 
+# ggplot(data=sim_long_df_a0016_rho0_noise,
+#        aes(x=p, y=count, colour=n)) +
+#        geom_line()
+# ggplot(data=sim_long_df_a0016_rho0_authentic,
+#        aes(x=p, y=count, colour=n)) +
+#        geom_line()
+# ####### rho = 0.316
+# sim_long_df_a5_rho3 <- sim_long_median_df[sim_long_median_df$alpha == 0.5 &
+#                                            sim_long_median_df$rho > 0.3 &
+#                                             sim_long_median_df$rho < 0.4, ]
+# sim_long_df_a5_rho3_noise <- 
+#   sim_long_df_a5_rho3[sim_long_df_a5_rho3$predictor_type == "noise_median", ]
+# sim_long_df_a5_rho3_authentic <- 
+#   sim_long_df_a5_rho3[sim_long_df_a5_rho3$predictor_type == "authentic_median", ]
+# 
+# ggplot(data=sim_long_df_a5_rho3_noise,
+#        aes(x=p, y=count, colour=n)) +
+#        geom_line()
+# ggplot(data=sim_long_df_a5_rho3_authentic,
+#        aes(x=p, y=count, colour=n)) +
+#        geom_line()
+# 
+# sim_long_df_a15_rho3 <- sim_long_median_df[sim_long_median_df$alpha == 0.15 &
+#                                            sim_long_median_df$rho == 0, ]
+# sim_long_df_a15_rho3_noise <- 
+#   sim_long_df_a15_rho3[sim_long_df_a15_rho3$predictor_type == "noise_median", ]
+# sim_long_df_a15_rho3_authentic <- 
+#   sim_long_df_a15_rho3[sim_long_df_a15_rho3$predictor_type == "authentic_median", ]
+# 
+# ggplot(data=sim_long_df_a15_rho3_noise,
+#        aes(x=p, y=count, colour=n)) +
+#        geom_line()
+# ggplot(data=sim_long_df_a15_rho3_authentic,
+#        aes(x=p, y=count, colour=n)) +
+#        geom_line()
+# table(sim_long_median_df$alpha)
+# table(sim_long_median_df$rho)
+# 
+# sim_long_df_a0016_rho3 <- sim_long_median_df[sim_long_median_df$alpha < 0.0017 &
+#                                            sim_long_median_df$rho == 0, ]
+# sim_long_df_a0016_rho3_noise <- 
+#   sim_long_df_a0016_rho3[sim_long_df_a0016_rho3$predictor_type == "noise_median", ]
+# sim_long_df_a0016_rho3_authentic <- 
+#   sim_long_df_a0016_rho3[sim_long_df_a0016_rho3$predictor_type == "authentic_median", ]
+# 
+# ggplot(data=sim_long_df_a0016_rho3_noise,
+#        aes(x=p, y=count, colour=n)) +
+#        geom_line()
+# ggplot(data=sim_long_df_a0016_rho3_authentic,
+#        aes(x=p, y=count, colour=n)) +
+#        geom_line()
 
 
 ```

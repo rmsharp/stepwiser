@@ -68,17 +68,12 @@ dk_sim <- function(file = "", directions, betas, n_values, alpha_values,
             }
             s_row <- s_row + 1
             
-            fivenum_authentic <- fivenum(sapply(results, function(x) {
-              length(authentic[x$coef_names %in% authentic])
-            } ))
-            fivenum_noise <- fivenum(sapply(results, function(x) {
-              length(x$coef_names[!x$coef_names %in% authentic])
-            } ))
+            fivenum_coef <- get_fivenum_coef(results, authentic, noise)
             sim_results[[s_row]] <- list(
               betas = betas, alpha = alpha, n = n, rho = rho, p = p,
               family = step$family$family, link = step$family$link,
-              fivenum_authentic = fivenum_authentic, 
-              fivenum_noise = fivenum_noise,
+              fivenum_authentic = fivenum_coef$coef_step$authentic, 
+              fivenum_noise = fivenum_coef$coef_step$noise,
               sims = sims)
             # cat(file = file, paste0("row ", s_row, " of ", rows, ": direction = ", 
             #                         direction, ", alpha = ", signif(alpha, digits = 3),

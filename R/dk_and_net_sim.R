@@ -43,7 +43,6 @@ dk_and_net_sim <- function(file = "", directions, betas, n_values,
   s_row <- 0
   n_betas <- length(betas)
   authentic <- paste0("X_", 1:n_betas)
-  
   for (direction in directions) {
     for (n in n_values) {
       for (alpha in alpha_values) {
@@ -81,6 +80,8 @@ dk_and_net_sim <- function(file = "", directions, betas, n_values,
                                 alpha = cv_net$alpha)
               r_row <- r_row + 1
               results[[r_row]] <- list(
+                alpha = alpha, n = n, rho = rho, p = p,
+                family = fit_step$family$family, link = fit_step$family$link,
                 coef_step = names(fit_step$coefficients),
                 coef_lasso = get_glmnet_coef(fit_lasso),
                 coef_ridge = get_glmnet_coef(fit_ridge),
@@ -102,16 +103,17 @@ dk_and_net_sim <- function(file = "", directions, betas, n_values,
             fivenum_coef <- get_fivenum_coef(results, authentic, noise)
             fivenum_mse <- get_fivenum_mse(results)
             sim_results[[s_row]] <- list(
+              results = results,
               betas = betas, alpha = alpha, n = n, rho = rho, p = p,
               family = fit_step$family$family, link = fit_step$family$link,
-              fivenum_authentic_step = fivenum_coef$authentic_step,
-              fivenum_noise_step = fivenum_coef$noise_step,
-              fivenum_authentic_lasso = fivenum_coef$authentic_lasso,
-              fivenum_noise_lasso = fivenum_coef$noise_lasso,
-              fivenum_authentic_ridge = fivenum_coef$authentic_ridge,
-              fivenum_noise_ridge = fivenum_coef$noise_ridge,
-              fivenum_authentic_net = fivenum_coef$authentic_net,
-              fivenum_noise_net = fivenum_coef$noise_net,
+              fivenum_authentic_step = fivenum_coef$coef_step$authentic,
+              fivenum_noise_step = fivenum_coef$coef_step$noise,
+              fivenum_authentic_lasso = fivenum_coef$coef_lasso$authentic,
+              fivenum_noise_lasso = fivenum_coef$coef_lasso$noise,
+              fivenum_authentic_ridge = fivenum_coef$coef_ridge$authentic,
+              fivenum_noise_ridge = fivenum_coef$coef_ridge$noise,
+              fivenum_authentic_net = fivenum_coef$coef_net$authentic,
+              fivenum_noise_net = fivenum_coef$coef_net$noise,
               mse_step = fivenum_mse$step,
               mse_lasso = fivenum_mse$lasso,
               mse_ridge = fivenum_mse$ridge,

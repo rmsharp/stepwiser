@@ -6,14 +6,13 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Lucky Penny • stepwiser</title>
-<link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.1/clipboard.min.js" integrity="sha256-hIvIxeqhGZF+VVeM55k0mJvWpQ6gTkWk3Emc+NmowYA=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><meta property="og:title" content="Lucky Penny">
 <meta property="og:description" content="">
 <meta name="twitter:card" content="summary">
-<!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
+<!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
@@ -31,7 +30,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">stepwiser</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.3</span>
       </span>
     </div>
 
@@ -58,9 +57,6 @@
     </li>
     <li>
       <a href="../articles/misstep.html">Do Not Misstep</a>
-    </li>
-    <li>
-      <a href="../articles/selecting_right_coins.html">Selecting the Right Coins</a>
     </li>
     <li>
       <a href="../articles/selecting_right_coins_presentation.html">Selecting the Right Coins</a>
@@ -119,11 +115,11 @@
 <div id="set-it-up" class="section level2 build">
 <h2 class="hasAnchor">
 <a href="#set-it-up" class="anchor"></a>Set It Up</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">set.seed</span>(<span class="dv">123</span>)</a>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Random">set.seed</a></span>(<span class="dv">123</span>)</a>
 <a class="sourceLine" id="cb1-2" data-line-number="2">n_coins &lt;-<span class="st"> </span><span class="dv">50</span></a>
 <a class="sourceLine" id="cb1-3" data-line-number="3">tosses &lt;-<span class="st"> </span><span class="dv">10</span></a>
 <a class="sourceLine" id="cb1-4" data-line-number="4">p_heads &lt;-<span class="st"> </span><span class="fl">0.5</span></a></code></pre></div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">results &lt;-<span class="st"> </span><span class="kw">rbinom</span>(n_coins, tosses, p_heads)</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">results &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/Binomial">rbinom</a></span>(n_coins, tosses, p_heads)</a></code></pre></div>
 <div class="notes">
 <p>I should have said, that we are looking for some lucky pennies, because I going to use the lucky pennies we find in a magic trick later. To find a lucky penny, I need to decide how many heads I need to observe to be surprised.</p>
 <p>I am going to cheat, because I happen to remember just enough theoretical statistics to know that when you observe a group of boolean trials, you can use the binomial distribution to calculated the probability of observing any number of one type of observation (heads) out of a known number of trials. (We are not going to show the equation, but it’s a combinatorial expression with factorials so it is pretty.)</p>
@@ -133,13 +129,13 @@
 <div id="what-is-surprising" class="section level2 build">
 <h2 class="hasAnchor">
 <a href="#what-is-surprising" class="anchor"></a>What Is Surprising</h2>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">dbinom</span>(<span class="dv">7</span>, tosses, p_heads)</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/Binomial">dbinom</a></span>(<span class="dv">7</span>, tosses, p_heads)</a></code></pre></div>
 <pre><code>## [1] 0.1171875</code></pre>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">dbinom</span>(<span class="dv">8</span>, tosses, p_heads)</a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/Binomial">dbinom</a></span>(<span class="dv">8</span>, tosses, p_heads)</a></code></pre></div>
 <pre><code>## [1] 0.04394531</code></pre>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw">dbinom</span>(<span class="dv">9</span>, tosses, p_heads)</a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/Binomial">dbinom</a></span>(<span class="dv">9</span>, tosses, p_heads)</a></code></pre></div>
 <pre><code>## [1] 0.009765625</code></pre>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw">dbinom</span>(<span class="dv">10</span>, tosses, p_heads)</a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/Binomial">dbinom</a></span>(<span class="dv">10</span>, tosses, p_heads)</a></code></pre></div>
 <pre><code>## [1] 0.0009765625</code></pre>
 </div>
 <div id="this-is-surprising-enough-i-think" class="section level2">
@@ -153,7 +149,7 @@
 <div id="being-the-geeks-we-are" class="section level2 build">
 <h2 class="hasAnchor">
 <a href="#being-the-geeks-we-are" class="anchor"></a>Being the Geeks We Are</h2>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1">picks &lt;-<span class="st"> </span><span class="kw">seq_along</span>(results)[results <span class="op">&gt;=</span><span class="st"> </span>surprise_threshhold]</a></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1">picks &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/seq">seq_along</a></span>(results)[results <span class="op">&gt;=</span><span class="st"> </span>surprise_threshhold]</a></code></pre></div>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1">picks</a></code></pre></div>
 <pre><code>## [1] 11 20 24 31</code></pre>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1">results[results <span class="op">&gt;=</span><span class="st"> </span>surprise_threshhold]</a></code></pre></div>
@@ -170,6 +166,35 @@
 <p>I can confidently carry these pennies into my magic show knowing they will continue to perform as well there as they did here.</p>
 </div>
 </div>
+<div id="but-we-are-statisticians" class="section level2">
+<h2 class="hasAnchor">
+<a href="#but-we-are-statisticians" class="anchor"></a>But We are Statisticians</h2>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1">tosses_large &lt;-<span class="st"> </span><span class="dv">1000</span></a>
+<a class="sourceLine" id="cb17-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/Binomial">pbinom</a></span>(<span class="dv">800</span>, tosses_large, <span class="fl">0.5</span>, <span class="dt">lower.tail =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<pre><code>## [1] 2.049443e-86</code></pre>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/Binomial">pbinom</a></span>(<span class="dv">550</span>, tosses_large, <span class="fl">0.5</span>, <span class="dt">lower.tail =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<pre><code>## [1] 0.0006958708</code></pre>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/Binomial">pbinom</a></span>(<span class="dv">525</span>, tosses_large, <span class="fl">0.5</span>, <span class="dt">lower.tail =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<pre><code>## [1] 0.05337477</code></pre>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/Binomial">pbinom</a></span>(<span class="dv">526</span>, tosses_large, <span class="fl">0.5</span>, <span class="dt">lower.tail =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<pre><code>## [1] 0.04684365</code></pre>
+<div class="notes">
+<p>Now as statisticians, 10 is not a big enough sample for a good estimate so let’s make it bigger.</p>
+</div>
+</div>
+<div id="were-still-surprised" class="section level2">
+<h2 class="hasAnchor">
+<a href="#were-still-surprised" class="anchor"></a>We’re Still Surprised</h2>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" data-line-number="1">surprise_threshhold_large &lt;-<span class="st"> </span><span class="dv">526</span></a>
+<a class="sourceLine" id="cb25-2" data-line-number="2">results_large &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/Binomial">rbinom</a></span>(n_coins, tosses_large, p_heads)</a>
+<a class="sourceLine" id="cb25-3" data-line-number="3">picks_large &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/seq">seq_along</a></span>(results_large)[results_large <span class="op">&gt;=</span><span class="st"> </span>surprise_threshhold_large]</a>
+<a class="sourceLine" id="cb25-4" data-line-number="4"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/length">length</a></span>(picks_large)</a></code></pre></div>
+<pre><code>## [1] 4</code></pre>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1">picks_large</a></code></pre></div>
+<pre><code>## [1]  5 15 26 39</code></pre>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1">results_large[results_large <span class="op">&gt;=</span><span class="st"> </span>surprise_threshhold_large]</a></code></pre></div>
+<pre><code>## [1] 528 533 531 539</code></pre>
+</div>
 <div id="what-have-we-seen" class="section level2 build">
 <h2 class="hasAnchor">
 <a href="#what-have-we-seen" class="anchor"></a>What Have We Seen?</h2>
@@ -177,7 +202,7 @@
 <li>Root cause of where stepwise methods go wrong</li>
 </ul>
 <div class="notes">
-<p>Now as statisticians, 10 is not a big enough sample for a good estimate so let’s make it bigger.</p>
+<p>It is not the initial sample, the results of flipping the 50 coins. It is the belief that the coins that behaved in a surprising way will continue to behave in a surprising way.</p>
 </div>
 </div>
 <div id="stepwise-methods" class="section level2 build">
@@ -248,16 +273,16 @@
 <li>Users often attribute relative importance to order of when variables go in and out of model</li>
 </ul>
 </div>
-<div id="effects-demonstrated-in-1992" class="section level2 build">
+<div id="effects-demonstrated-in-1992-1-of-6" class="section level2 build">
 <h2 class="hasAnchor">
-<a href="#effects-demonstrated-in-1992" class="anchor"></a>Effects Demonstrated in 1992</h2>
+<a href="#effects-demonstrated-in-1992-1-of-6" class="anchor"></a>Effects Demonstrated in 1992 (1 of 6)</h2>
 <ul>
 <li>Number of candidate predictor variables affected the number of noise variables that gained entry to the model</li>
 </ul>
 </div>
-<div id="effects-demonstrated-in-1992-1" class="section level2">
+<div id="effects-demonstrated-in-1992-2-of-6" class="section level2">
 <h2 class="hasAnchor">
-<a href="#effects-demonstrated-in-1992-1" class="anchor"></a>Effects Demonstrated in 1992</h2>
+<a href="#effects-demonstrated-in-1992-2-of-6" class="anchor"></a>Effects Demonstrated in 1992 (2 of 6)</h2>
 <ul>
 <li>
 <p>Number of candidate predictor variables affected the number of noise variables that gained entry to the model</p>
@@ -288,9 +313,9 @@
 </li>
 </ul>
 </div>
-<div id="effects-demonstrated-in-1992-2" class="section level2">
+<div id="effects-demonstrated-in-1992-3-of-6" class="section level2">
 <h2 class="hasAnchor">
-<a href="#effects-demonstrated-in-1992-2" class="anchor"></a>Effects Demonstrated in 1992</h2>
+<a href="#effects-demonstrated-in-1992-3-of-6" class="anchor"></a>Effects Demonstrated in 1992 (3 of 6)</h2>
 <ul>
 <li>
 <p>Number of candidate predictor variables affected the number of noise variables that gained entry to the model</p>
@@ -324,9 +349,9 @@
 </li>
 </ul>
 </div>
-<div id="effects-demonstrated-in-1992-3" class="section level2">
+<div id="effects-demonstrated-in-1992-4-of-6" class="section level2">
 <h2 class="hasAnchor">
-<a href="#effects-demonstrated-in-1992-3" class="anchor"></a>Effects Demonstrated in 1992</h2>
+<a href="#effects-demonstrated-in-1992-4-of-6" class="anchor"></a>Effects Demonstrated in 1992 (4 of 6)</h2>
 <ul>
 <li>
 <p>Number of candidate predictor variables affected the number of noise variables that gained entry to the model</p>
@@ -361,9 +386,9 @@
 </li>
 </ul>
 </div>
-<div id="effects-demonstrated-in-1992-4" class="section level2">
+<div id="effects-demonstrated-in-1992-5-of-6" class="section level2">
 <h2 class="hasAnchor">
-<a href="#effects-demonstrated-in-1992-4" class="anchor"></a>Effects Demonstrated in 1992</h2>
+<a href="#effects-demonstrated-in-1992-5-of-6" class="anchor"></a>Effects Demonstrated in 1992 (5 of 6)</h2>
 <ul>
 <li>
 <p>Number of candidate predictor variables affected the number of noise variables that gained entry to the model</p>
@@ -401,9 +426,9 @@
 </li>
 </ul>
 </div>
-<div id="effects-demonstrated-in-1992-5" class="section level2 build">
+<div id="effects-demonstrated-in-1992-6-of-6" class="section level2 build">
 <h2 class="hasAnchor">
-<a href="#effects-demonstrated-in-1992-5" class="anchor"></a>Effects Demonstrated in 1992</h2>
+<a href="#effects-demonstrated-in-1992-6-of-6" class="anchor"></a>Effects Demonstrated in 1992 (6 of 6)</h2>
 <ul>
 <li>Number of candidate predictor variables affected the number of noise variables that gained entry to the model</li>
 <li>Authentic variables selected less than <span class="math inline">\(0.5\)</span> the time</li>
@@ -504,6 +529,8 @@
       <li><a href="#this-is-surprising-enough-i-think">This Is Surprising Enough (I think ??)</a></li>
       <li><a href="#being-the-geeks-we-are">Being the Geeks We Are</a></li>
       <li><a href="#what-did-we-just-accomplish">What Did We Just Accomplish?</a></li>
+      <li><a href="#but-we-are-statisticians">But We are Statisticians</a></li>
+      <li><a href="#were-still-surprised">We’re Still Surprised</a></li>
       <li><a href="#what-have-we-seen">What Have We Seen?</a></li>
       <li><a href="#stepwise-methods">Stepwise Methods</a></li>
       <li><a href="#stepwise-methods-1">Stepwise Methods</a></li>
@@ -511,12 +538,12 @@
       <li><a href="#stepwise-methods-3">Stepwise Methods</a></li>
       <li><a href="#statistical-issues">Statistical Issues</a></li>
       <li><a href="#effects-demonstrated-in-1970s-and-1980s">Effects Demonstrated in 1970’s and 1980’s</a></li>
-      <li><a href="#effects-demonstrated-in-1992">Effects Demonstrated in 1992</a></li>
-      <li><a href="#effects-demonstrated-in-1992-1">Effects Demonstrated in 1992</a></li>
-      <li><a href="#effects-demonstrated-in-1992-2">Effects Demonstrated in 1992</a></li>
-      <li><a href="#effects-demonstrated-in-1992-3">Effects Demonstrated in 1992</a></li>
-      <li><a href="#effects-demonstrated-in-1992-4">Effects Demonstrated in 1992</a></li>
-      <li><a href="#effects-demonstrated-in-1992-5">Effects Demonstrated in 1992</a></li>
+      <li><a href="#effects-demonstrated-in-1992-1-of-6">Effects Demonstrated in 1992 (1 of 6)</a></li>
+      <li><a href="#effects-demonstrated-in-1992-2-of-6">Effects Demonstrated in 1992 (2 of 6)</a></li>
+      <li><a href="#effects-demonstrated-in-1992-3-of-6">Effects Demonstrated in 1992 (3 of 6)</a></li>
+      <li><a href="#effects-demonstrated-in-1992-4-of-6">Effects Demonstrated in 1992 (4 of 6)</a></li>
+      <li><a href="#effects-demonstrated-in-1992-5-of-6">Effects Demonstrated in 1992 (5 of 6)</a></li>
+      <li><a href="#effects-demonstrated-in-1992-6-of-6">Effects Demonstrated in 1992 (6 of 6)</a></li>
       <li><a href="#what-if-you-have-great-data">What If You Have Great Data</a></li>
       <li><a href="#and-noisy-noise">And Noisy Noise</a></li>
       <li><a href="#you-pick-noise">You Pick Noise</a></li>
@@ -538,9 +565,8 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.2.0.</p>
 </div>
-
       </footer>
 </div>
 

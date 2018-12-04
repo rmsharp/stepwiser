@@ -1,7 +1,7 @@
 Package: stepwiser
 Type: Package
 Title: Demonstrates effects of using stepwise variable selection
-Version: 0.1.2
+Version: 0.1.3
 Date: 2018-12-03
 Authors@R: c(
     person("R. Mark", "Sharp", email = "rmsharp@me.com", , 

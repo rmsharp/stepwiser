@@ -3,6 +3,7 @@
 #' @param results list of results created inside simulation loop
 #' @param authentic character vector of authentic predictive variables.
 #' @param noise character vector of noise predictive variables.
+#' @importFrom stringi stri_detect_fixed
 #' @export
 get_fivenum_coef <- function(results, authentic, noise) {
   coef_names <- unique(names(results[[1]])[stri_detect_fixed(names(results[[1]]), "coef_")])

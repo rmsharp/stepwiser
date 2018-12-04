@@ -1,10 +1,9 @@
 pandoc: 2.3.1
-pkgdown: 1.1.0.9000
-pkgdown_sha: 3b3188bfbbd8cc42daa3218f3884b85fd5122372
+pkgdown: 1.2.0
+pkgdown_sha: ~
 articles:
   lucky_penny_pres: lucky_penny_pres.html
   misstep: misstep.html
-  selecting_right_coins: selecting_right_coins.html
   selecting_right_coins_presentation: selecting_right_coins_presentation.html
   simulation: simulation.html
 

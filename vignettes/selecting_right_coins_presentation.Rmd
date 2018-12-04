@@ -2,7 +2,7 @@
 title: "Selecting the Right Coins"
 author: "R. Mark Sharp"
 date: "10/5/2018"
-output: power_point
+output: powerpoint_presentation
 ---
 
 ```{r setup, include=FALSE}

@@ -35,7 +35,7 @@ Find online documentation at [https://rmsharp.github.io/stepwiser/](https://rmsh
 ## Purpose
 
 The use of automated subset search algorithms for the selection of predictive variables to include in the final model is a standard practice.
-This package provides simulation tools (Monte Carlo) and vignettes using those tools to investigate and 
+This package is too provide simulation tools and vignettes using those tools to investigate and 
 expose the weaknesses of using stepwise methods (backward elimination, forward
 selection, and stepwise algorithms) to select predictive variables.
 
@@ -49,4 +49,5 @@ procedures, many users of these algorithms still attribute more to the methds th
 These beliefs are not true and they are not the reason that stepwise methods were developed. They were developed to select subset from data sets ``padded with extraneous varabiles''.
 This package can be used to examine how successful stepwise methods are in attaining that goal.
 
-
+More importantly, this will illustrate the performance of ridge, lasso, and elastic net on the same 
+simulated data sets.

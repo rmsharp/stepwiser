@@ -1,0 +1,14 @@
+reference:
+- title: All functions
+  desc: ~
+  contents:
+  - '`dk_and_net_sim.R`'
+  - '`dk_sim.R`'
+  - '`get_cv_glmnet.R`'
+ - '`get_fivenum_coef.R`'
+ - '`get_fivenum_mse.R`'
+ - '`get_glmnet_coef.R`'
+ - '`get_predictors.R`'
+ - '`get_targets.R`'
+ - '`make_dataset.R`'
+ - '`sim_object_to_df.R`'

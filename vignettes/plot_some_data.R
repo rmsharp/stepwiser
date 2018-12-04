@@ -1,0 +1,8 @@
+plot(data$y, data$X_11)
+plot(data$y, data$X_12)
+plot(data$y, data$X_13)
+plot(data$y, data$X_14)
+plot(data$y, data$X_15)
+plot(data$y, data$X_16)
+par(mfrow=c(1,1))
+plot(data$y, data$X_20)

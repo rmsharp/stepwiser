@@ -223,14 +223,14 @@ variables that gained entry to the model
 ## Effects Demonstrated in 1992 {.build}
 
 - Number of candidate predictor variables affected the number of noise 
-variables that gained entry to the model
+  variables that gained entry to the model
 - Authentic variables selected less than $0.5$ the time
 - Noise variables selected $0.20$ to $0.74$ of the time
 - Increasing sample size does not help much
 - $R^2 \propto$ number candidate predictor variables and not the number
-of final predictor variables
+  of final predictor variables
 - Method yields confidence intervals for effects and predicted values 
-that are falsely narrow
+  that are falsely narrow
 
 ## What If You Have Great Data
 
@@ -269,7 +269,7 @@ Predictors | Noise $\alpha = 0.0016$ |Noise $\alpha = 0.15$
 
 - Gold standard: know your domain, pick predictive variables, keep them all
 - Least Absolute Shrinkage and Selection Operator (LASSO) or elastic nets 
-if multicollinearity is a possibility.
+  if multicollinearity is a possibility.
 
 ## Lasso
 

@@ -2,13 +2,7 @@
 title: "Lucky Penny"
 author: "R. Mark Sharp"
 date: "10/10/2018"
-output: 
-   ioslides_presentation:
-     widescreen: true
-     incremental: true
-     fig_width: 6
-     fig_height: 5
-     fig_caption: true
+output: ioslides_presentation
 ---
 
 ```{r setup, include=FALSE}
@@ -19,7 +13,7 @@ knitr::opts_chunk$set(echo = TRUE, include = TRUE)
   -  Stepwise Regression
   -  Any Mechanism Using Automated or Manual Steps
   
-# Thought Experiment | Find some lucky pennies 
+## Thought Experiment | Find some lucky pennies 
 <div class = "notes">
 Imagine that you have 50 pennies labeled 1 through 50 and 
 you flip each one 10 times and write on each coin how many 

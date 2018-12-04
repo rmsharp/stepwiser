@@ -1,4 +1,11 @@
 reference:
+- title: Presentations
+  desc: ~
+  contents:
+  - '`lucky_penny.html`'
+  - '`misstep.html`'
+  - '`simulation.html`'
+  - '`misstep.html`'
 - title: All functions
   desc: ~
   contents:

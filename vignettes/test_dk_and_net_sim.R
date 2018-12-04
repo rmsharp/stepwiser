@@ -1,10 +1,12 @@
+library(stepwiser)
+
 pkgs <- list("stringi", "rmsutilityr", "glmnet", "doParallel", "foreach", 
              "MASS", "pROC", "stepwiser")
 lapply(pkgs, library, character.only = TRUE)
 registerDoParallel(cores = 4)
 file <- get_dated_filename("dk_and_net_sim.csv")
 sims <- 20
-directions <- "forward"
+directions <- c("both", "forward")
 betas <- c(1, 2, 3, -1, -2, -3)
 n_values <- c(100, 250, 500, 1000)
 n_values <- 100
@@ -18,23 +20,23 @@ alpha_values <- c(0.5, 0.15, 1 - (1 - MFWER)^(1 / predictors), 0.05)
 alpha_values <- 0.05
 weight <- 1
 nlambda <- 100
-sim_object_test <- dk_and_net_sim(file = file, directions = directions, betas, 
+sim_object <- dk_and_net_sim(file = file, directions = directions, betas, 
                              n_values, alpha_values, rho_values, predictors, 
                              weight = weight, nlambda = nlambda,
                              sims = sims, rnorm, 0, 0.2)
-sim_wide_30_60_90_df <- sim_object_to_df(sim_object)
-write.csv(sim_wide_30_60_90_df, 
+sim_wide_df <- sim_object_to_df(sim_object)
+write.csv(sim_wide_df, 
           file = get_dated_filename(
             stri_c("simulation_", nrow(sim_wide_df), ".csv")))
-rho <- sim_wide_df$rho
-p <- sim_wide_df$p
-alpha <- sim_wide_df$alpha
-
-table(sim_wide_df$noise_min_step[sim_wide_df$p == 24 & rho > 0.6])
-table(sim_wide_df$noise_min_lasso[sim_wide_df$p == 24 & rho > 0.6])
-table(sim_wide_df$noise_min_ridge[sim_wide_df$p == 24 & rho > 0.6])
-table(sim_wide_df$noise_min_net[sim_wide_df$p == 24 & rho > 0.6])
-table(sim_wide_df$noise_median_step[sim_wide_df$p == 24 & rho > 0.6])
-table(sim_wide_df$noise_median_lasso[sim_wide_df$p == 24 & rho > 0.6])
-table(sim_wide_df$noise_median_ridge[sim_wide_df$p == 24 & rho > 0.6])
-table(sim_wide_df$noise_median_net[sim_wide_df$p == 24 & rho > 0.6])
+# rho <- sim_wide_df$rho
+# p <- sim_wide_df$p
+# alpha <- sim_wide_df$alpha
+# 
+# table(sim_wide_df$noise_min_step[sim_wide_df$p == 24 & rho > 0.6])
+# table(sim_wide_df$noise_min_lasso[sim_wide_df$p == 24 & rho > 0.6])
+# table(sim_wide_df$noise_min_ridge[sim_wide_df$p == 24 & rho > 0.6])
+# table(sim_wide_df$noise_min_net[sim_wide_df$p == 24 & rho > 0.6])
+# table(sim_wide_df$noise_median_step[sim_wide_df$p == 24 & rho > 0.6])
+# table(sim_wide_df$noise_median_lasso[sim_wide_df$p == 24 & rho > 0.6])
+# table(sim_wide_df$noise_median_ridge[sim_wide_df$p == 24 & rho > 0.6])
+# table(sim_wide_df$noise_median_net[sim_wide_df$p == 24 & rho > 0.6])

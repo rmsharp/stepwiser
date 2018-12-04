@@ -114,12 +114,40 @@ continue to perform as well there as they did here.
 
 </div>
 
+## But We are Statisticians
+```{r lot-of-tosses}
+tosses_large <- 1000
+pbinom(800, tosses_large, 0.5, lower.tail = FALSE)
+pbinom(550, tosses_large, 0.5, lower.tail = FALSE)
+pbinom(525, tosses_large, 0.5, lower.tail = FALSE)
+pbinom(526, tosses_large, 0.5, lower.tail = FALSE)
+
+```
+
+<div class="notes">
+
+Now as statisticians, `r tosses` is not a big enough sample for a good estimate so let's make it bigger.
+
+</div>
+
+## We're Still Surprised
+
+```{r find-surprises-more-data, echo=TRUE, include = TRUE}
+surprise_threshhold_large <- 526
+results_large <- rbinom(n_coins, tosses_large, p_heads)
+picks_large <- seq_along(results_large)[results_large >= surprise_threshhold_large]
+length(picks_large)
+picks_large
+results_large[results_large >= surprise_threshhold_large]
+
+```
 ## What Have We Seen? {.build}
 - Root cause of where stepwise methods go wrong
 
 <div class="notes">
-Now as statisticians, `r tosses` is not a big enough sample for a good 
-estimate so let's make it bigger.
+It is not the initial sample, the results of flipping the 50 coins. It is the belief that the
+coins that behaved in a surprising way will continue to behave in a surprising way.
+
 </div>
 
 
@@ -165,12 +193,12 @@ to test prespecified hypotheses
 - Users often attribute relative importance to order of when variables go 
 in and out of model
 
-## Effects Demonstrated in 1992 {.build}
+## Effects Demonstrated in 1992 (1 of 6) {.build}
 
 - Number of candidate predictor variables affected the number of noise 
 variables that gained entry to the model
 
-## Effects Demonstrated in 1992
+## Effects Demonstrated in 1992 (2 of 6)
 
 - Number of candidate predictor variables affected the number of noise 
 variables that gained entry to the model
@@ -182,7 +210,7 @@ variables that gained entry to the model
    24         | 1.44   | 46
    
    
-## Effects Demonstrated in 1992
+## Effects Demonstrated in 1992 (3 of 6)
 
 - Number of candidate predictor variables affected the number of noise 
 variables that gained entry to the model
@@ -195,7 +223,7 @@ variables that gained entry to the model
    18         | 0.93   | 59
    24         | 1.36   | 62
 
-## Effects Demonstrated in 1992
+## Effects Demonstrated in 1992 (4 of 6)
 
 - Number of candidate predictor variables affected the number of noise 
 variables that gained entry to the model
@@ -207,7 +235,7 @@ variables that gained entry to the model
    24         | 1.66   | 1.44   | 46
    
    
-## Effects Demonstrated in 1992
+## Effects Demonstrated in 1992 (5 of 6)
 
 - Number of candidate predictor variables affected the number of noise 
 variables that gained entry to the model
@@ -220,7 +248,7 @@ variables that gained entry to the model
    18         | 0.87   | 0.93   | 59
    24         | 0.83   | 1.36   | 62
 
-## Effects Demonstrated in 1992 {.build}
+## Effects Demonstrated in 1992 (6 of 6) {.build}
 
 - Number of candidate predictor variables affected the number of noise 
   variables that gained entry to the model

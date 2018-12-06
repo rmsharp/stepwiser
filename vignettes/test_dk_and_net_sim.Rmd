@@ -1,3 +1,9 @@
+
+```{r all, echo = TRUE, include = TRUE}
+knitr::opts_chunk$set(eval = FALSE)
+```
+
+```{r test-code}
 library(stepwiser)
 
 pkgs <- list("stringi", "rmsutilityr", "glmnet", "doParallel", "foreach", 
@@ -40,3 +46,4 @@ write.csv(sim_wide_df,
 # table(sim_wide_df$noise_median_lasso[sim_wide_df$p == 24 & rho > 0.6])
 # table(sim_wide_df$noise_median_ridge[sim_wide_df$p == 24 & rho > 0.6])
 # table(sim_wide_df$noise_median_net[sim_wide_df$p == 24 & rho > 0.6])
+````

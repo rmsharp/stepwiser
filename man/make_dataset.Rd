@@ -2,9 +2,10 @@
 % Please edit documentation in R/make_dataset.R
 \name{make_dataset}
 \alias{make_dataset}
-\title{Forms dataset used for simulation}
+\title{Forms data set used for simulation}
 \usage{
-make_dataset(n, betas, corr, p)
+make_dataset(n = 100, betas, corr, p, target_mean = 0,
+  target_sd = 100, error_fun_mean = 1:10, error_fun_sd = 50:200)
 }
 \arguments{
 \item{n}{number of observations}
@@ -14,7 +15,17 @@ make_dataset(n, betas, corr, p)
 \item{corr}{correlations used in making predictive variables}
 
 \item{p}{number of predictive variables}
+
+\item{target_mean}{mean value of target variable}
+
+\item{target_sd}{standard deviation of target variable}
+
+\item{error_fun_mean}{vector of possible means used in the error function 
+\code{error_fun}.}
+
+\item{error_fun_sd}{vector of possible standard deviations used in the error function
+\code{error_fun}}
 }
 \description{
-Forms dataset used for simulation
+The data set is
 }

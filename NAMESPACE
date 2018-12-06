@@ -3,6 +3,7 @@
 export(dk_and_net_sim)
 export(dk_sim)
 export(get_fivenum_coef)
+export(get_fivenum_mse)
 export(get_glmnet_coef)
 export(get_predictors)
 export(get_targets)

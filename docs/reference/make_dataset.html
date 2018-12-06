@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Forms dataset used for simulation — make_dataset • stepwiser</title>
+<title>Forms data set used for simulation — make_dataset • stepwiser</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Forms dataset used for simulation — make_dataset" />
+<meta property="og:title" content="Forms data set used for simulation — make_dataset" />
 
-<meta property="og:description" content="Forms dataset used for simulation" />
+<meta property="og:description" content="The data set is" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -63,7 +63,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">stepwiser</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.4</span>
       </span>
     </div>
 
@@ -97,6 +97,9 @@
     <li>
       <a href="../articles/simulation.html">UNKNOWN TITLE</a>
     </li>
+    <li>
+      <a href="../articles/test_dk_and_net_sim.html">UNKNOWN TITLE</a>
+    </li>
   </ul>
 </li>
       </ul>
@@ -120,18 +123,19 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Forms dataset used for simulation</h1>
+    <h1>Forms data set used for simulation</h1>
     <small class="dont-index">Source: <a href='https://github.com/rmsharp/stepwiser/blob/master/R/make_dataset.R'><code>R/make_dataset.R</code></a></small>
     <div class="hidden name"><code>make_dataset.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Forms dataset used for simulation</p>
+    <p>The data set is</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>make_dataset</span>(<span class='no'>n</span>, <span class='no'>betas</span>, <span class='no'>corr</span>, <span class='no'>p</span>)</pre>
+    <pre class="usage"><span class='fu'>make_dataset</span>(<span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>100</span>, <span class='no'>betas</span>, <span class='no'>corr</span>, <span class='no'>p</span>, <span class='kw'>target_mean</span> <span class='kw'>=</span> <span class='fl'>0</span>,
+  <span class='kw'>target_sd</span> <span class='kw'>=</span> <span class='fl'>100</span>, <span class='kw'>error_fun_mean</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>10</span>, <span class='kw'>error_fun_sd</span> <span class='kw'>=</span> <span class='fl'>50</span>:<span class='fl'>200</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -151,6 +155,24 @@
     <tr>
       <th>p</th>
       <td><p>number of predictive variables</p></td>
+    </tr>
+    <tr>
+      <th>target_mean</th>
+      <td><p>mean value of target variable</p></td>
+    </tr>
+    <tr>
+      <th>target_sd</th>
+      <td><p>standard deviation of target variable</p></td>
+    </tr>
+    <tr>
+      <th>error_fun_mean</th>
+      <td><p>vector of possible means used in the error function 
+<code>error_fun</code>.</p></td>
+    </tr>
+    <tr>
+      <th>error_fun_sd</th>
+      <td><p>vector of possible standard deviations used in the error function
+<code>error_fun</code></p></td>
     </tr>
     </table>
     

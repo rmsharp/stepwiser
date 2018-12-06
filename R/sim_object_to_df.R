@@ -8,8 +8,9 @@
 #' @export
 sim_object_to_df <- function(sim_object) {
   data.frame(
-    alpha = sapply(sim_object, function(x) {x$alpha}),
+    direction = sapply(sim_object, function(x) {x$direction}),
     n = sapply(sim_object, function(x) {x$n}),
+    alpha = sapply(sim_object, function(x) {x$alpha}),
     rho = sapply(sim_object, function(x) {x$rho}),
     p = sapply(sim_object, function(x) {x$p}),
     family = sapply(sim_object, function(x) {x$family}),

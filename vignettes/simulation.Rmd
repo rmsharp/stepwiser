@@ -1,3 +1,6 @@
+```{r do-not-evaluate, echo = TRUE, include = TRUE}
+knitr::opts_chunk$set(eval = FALSE)
+```
 ### Simulation constants
 
 ```{r file, echo = TRUE, include = TRUE}

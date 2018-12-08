@@ -6,10 +6,8 @@ knitr::opts_chunk$set(eval = FALSE)
 ```{r test-code}
 library(stepwiser)
 
-pkgs <- list("stringi", "rmsutilityr", "glmnet", "doParallel", "foreach", 
-             "MASS", "pROC", "stepwiser")
+pkgs <- list("stringi", "rmsutilityr", "stepwiser")
 lapply(pkgs, library, character.only = TRUE)
-registerDoParallel(cores = 4)
 file <- get_dated_filename("dk_and_net_sim.csv")
 sims <- 20
 directions <- c("both", "forward")

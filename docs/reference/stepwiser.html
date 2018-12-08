@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>dk_sim simulation function based on a 1992 paper by Derksen and Keselman — dk_and_net_sim • stepwiser</title>
+<title>Simulation software loosely based on [@derksen_keselman1992] — stepwiser • stepwiser</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,12 +30,22 @@
 
 
 
-<meta property="og:title" content="dk_sim simulation function based on a 1992 paper by Derksen and Keselman — dk_and_net_sim" />
+<meta property="og:title" content="Simulation software loosely based on [@derksen_keselman1992] — stepwiser" />
 
-<meta property="og:description" content="Backward, forward and stepwise automated subset selection algorithms:
-Frequency of obtaining authentic and noise variables by Shelley Derksen
-H. J. Keselman, British Journal of Mathematical and Statistical Psychology
-(1992) 45, 265-282." />
+<meta property="og:description" content="Primary Data Structures --- Simulation Object
+The simulation object is the output from dk_sim() and contains the
+results of the simulation.
+A Pedigree is a data.frame with the following columns:
+The possible columns are as follows:
+result -- list with variable selections and mean squared error 
+values from each simulated data set
+" />
+
+<meta property="og:description" content="Simulation function
+
+dk_sim --- Used to simulate GLM analyses with stepwise, lasso, ridge, and elastic 
+net variable selection techniques.
+" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -126,99 +136,37 @@ H. J. Keselman, British Journal of Mathematical and Statistical Psychology
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>dk_sim simulation function based on a 1992 paper by Derksen and Keselman</h1>
-    <small class="dont-index">Source: <a href='https://github.com/rmsharp/stepwiser/blob/master/R/dk_sim.R'><code>R/dk_sim.R</code></a></small>
-    <div class="hidden name"><code>dk_and_net_sim.Rd</code></div>
+    <h1>Simulation software loosely based on [@derksen_keselman1992]</h1>
+    <small class="dont-index">Source: <a href='https://github.com/rmsharp/stepwiser/blob/master/R/stepwiser.R'><code>R/stepwiser.R</code></a></small>
+    <div class="hidden name"><code>stepwiser.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Backward, forward and stepwise automated subset selection algorithms:
-Frequency of obtaining authentic and noise variables by Shelley Derksen
-H. J. Keselman, British Journal of Mathematical and Statistical Psychology
-(1992) 45, 265-282.</p>
+    <p>Primary Data Structures --- Simulation Object</p>
+<p>The simulation object is the output from <code>dk_sim()</code> and contains the
+results of the simulation.</p>
+<p>A Pedigree is a data.frame with the following columns:
+The possible columns are as follows:</p><ul>
+<li><p>result -- list with variable selections and mean squared error 
+values from each simulated data set</p></li>
+</ul>
+
+    <p>Simulation function</p>
+<ul>
+<li><p>dk_sim --- Used to simulate GLM analyses with stepwise, lasso, ridge, and elastic 
+net variable selection techniques.</p></li>
+</ul>
     
     </div>
 
-    <pre class="usage"><span class='fu'>dk_and_net_sim</span>(<span class='kw'>file</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='no'>directions</span>, <span class='no'>betas</span>, <span class='no'>n_values</span>, <span class='no'>alpha_values</span>,
-  <span class='no'>rho_values</span>, <span class='no'>predictors</span>, <span class='kw'>weight</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>nlambda</span> <span class='kw'>=</span> <span class='fl'>100</span>, <span class='no'>sims</span>, <span class='no'>error_fun</span>,
-  <span class='no'>...</span>)</pre>
-    
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>file</th>
-      <td><p>character containing file argument to cat used to report intermediate results</p></td>
-    </tr>
-    <tr>
-      <th>directions</th>
-      <td><p>character vector with one or more of "backward", "forward",
-or "both".</p></td>
-    </tr>
-    <tr>
-      <th>betas</th>
-      <td><p>coefficients of regression</p></td>
-    </tr>
-    <tr>
-      <th>n_values</th>
-      <td><p>vector of sample sizes</p></td>
-    </tr>
-    <tr>
-      <th>alpha_values</th>
-      <td><p>vector of alpha threshold values</p></td>
-    </tr>
-    <tr>
-      <th>rho_values</th>
-      <td><p>vector of correlations between real predictors</p></td>
-    </tr>
-    <tr>
-      <th>predictors</th>
-      <td><p>vector of the number of predictor variables to include</p></td>
-    </tr>
-    <tr>
-      <th>weight</th>
-      <td><p>observation weights. Can be total counts if responses are 
-proportion matrices. Default is 1 for each observation</p></td>
-    </tr>
-    <tr>
-      <th>nlambda</th>
-      <td><p>The number of lambda values - default is 100.</p></td>
-    </tr>
-    <tr>
-      <th>sims</th>
-      <td><p>number of simulations</p></td>
-    </tr>
-    <tr>
-      <th>error_fun</th>
-      <td><p>function providing the error term for each row of 
-observations</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>additional arguments need by <code>error_fun</code></p></td>
-    </tr>
-    </table>
-    
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>object with</p>
-    
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>Need to allow add and remove thresholds instead of a single value.</p>
-    
+        
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#value">Value</a></li>
-
-      <li><a href="#details">Details</a></li>
-          </ul>
+                </ul>
 
   </div>
 </div>

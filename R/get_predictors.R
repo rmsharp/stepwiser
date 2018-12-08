@@ -12,9 +12,10 @@
 #' @importFrom stringi stri_c
 #' @export
 get_predictors <- function(y, betas, corr, p, error_fun) {
-  if (length(y) < 2 | length(betas) < 0 | p < 1 | any(corr < 0.0) | length(corr) != p)
-    stop(stri_c("Parameter error: check that p >= 1, n >= 2, all(corr >= 0.0), ",
-                "length(corr) == p, dim(Z)[1] == n and dim(Z)[2] == (p + 1)"))
+  if (length(y) < 2 | length(betas) < 0 | p < 1 | any(corr < 0.0) | 
+      length(corr) != p)
+    stop(stri_c("Parameter error: check that y >= 2, length(betas) >= 0, ",
+                "p >= 1, n >= 2, all(corr >= 0.0), ", "length(corr) != p"))
   
   if (is.null(error_fun))
     error_fun <- function(y) {rnorm(length(y), 0, 0.02)}

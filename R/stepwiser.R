@@ -15,8 +15,8 @@
 #' Simulation function
 #'
 #' \itemize{
-#' \item{\link{dk_sim}} {--- Used to simulate GLM analyses with stepwise, lasso, ridge, and elastic 
-#' net variable selection techniques.}
+#' \item{\link{dk_sim}} {--- Used to simulate GLM analyses with various 
+#' stepwise, lasso, ridge, and elastic net variable selection techniques.}
 #' }
 #' 
 #'

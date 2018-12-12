@@ -24,7 +24,7 @@ alpha_values <- c(0.5, 0.15, 1 - (1 - MFWER)^(1 / predictors), 0.05)
 alpha_values <- 0.05
 weight <- 1
 nlambda <- 100
-sim_object <- dk_and_net_sim(file = file, directions = directions, betas, 
+sim_object <- dk_sim(file = file, directions = directions, betas, 
                              n_values, alpha_values, rho_values, predictors, 
                              weight = weight, nlambda = nlambda,
                              sims = sims, rnorm, 0, 0.2)

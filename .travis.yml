@@ -1,0 +1,35 @@
+language: r
+sudo: required
+cache:
+  - packages
+  - github_packages
+dist: trusty
+r:
+    - 3.4.1
+    - oldrel
+    - release
+r_packages:
+    - devtools
+    - covr
+    - rcmdcheck
+matrix:
+     include:
+         - os: osx
+           fortran: false
+script:
+  - R -e 'r <- rcmdcheck::rcmdcheck(".", args = c("--no-manual")); devtools::test(); quit(save = "no", status = if (length(c(r$errors, r$warnings)) > 0) { 1 } else { 0 }, runLast = FALSE)'
+after_success:
+  - R -e 'covr::codecov()'
+  - Rscript -e 'pkgdown::build_site()'
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GITHUB_PAT
+  keep-history: true
+  local-dir: docs
+  on:
+    branch: master
+env:
+  - global:
+    - CI=TRUE
+    - LINTR_COMMENT_BOT=false

@@ -1,0 +1,19 @@
+---
+title: "What Is a Good Simulation Tool for Modeler's"
+author: "R. Mark Sharp"
+date: "12/11/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Purpose
+The purpose of this document is to explore what features are needed in a 
+simulation tool for Generalized Linear Model (GLM) developers.
+
+## Data Generation
+The first task would be to develop methods of specifying the target and 
+predictive varialbles. This would include the number, type (categorical, 
+)

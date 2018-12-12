@@ -23,6 +23,7 @@ Imports:
     snow,
     stringi,
     survival,
+    tcltk,
     xtable,
     Zelig
 Suggests:

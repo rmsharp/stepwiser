@@ -9,7 +9,6 @@
 #' @importFrom utils globalVariables
 #' @export
 get_cv_glmnet <- function(x, y, cv_alpha) {
-  globalVariables("i")
   if (length(cv_alpha) == 1) {
     if (cv_alpha == 0 | cv_alpha == 1) {
       cv.glmnet(x, y, family = "gaussian", nfolds = 10, type.measure = "deviance", 

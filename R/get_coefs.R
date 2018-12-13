@@ -4,8 +4,6 @@
 #' of the variable selection (reduction) technique used.
 #' 
 #' @param models list of model objects made by \code{get_fit_models}.
-#' @param data list having the data used for training and testing the 
-#' various model types.
 #' @export
 get_coefs <- function(models) {
   coefs <- list()

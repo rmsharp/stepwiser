@@ -5,11 +5,11 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Do Not Misstep • stepwiser</title>
+<title>What Is a Good Simulation Tool for Modeler’s • stepwiser</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="Do Not Misstep">
+<script src="../pkgdown.js"></script><meta property="og:title" content="What Is a Good Simulation Tool for Modeler’s">
 <meta property="og:description" content="">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -92,48 +92,27 @@
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1>Do Not Misstep</h1>
+      <h1>What Is a Good Simulation Tool for Modeler’s</h1>
                         <h4 class="author">R. Mark Sharp</h4>
             
-            <h4 class="date">10/4/2018</h4>
+            <h4 class="date">12/11/2018</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/rmsharp/stepwiser/blob/master/vignettes/misstep.Rmd"><code>vignettes/misstep.Rmd</code></a></small>
-      <div class="hidden name"><code>misstep.Rmd</code></div>
+      <small class="dont-index">Source: <a href="https://github.com/rmsharp/stepwiser/blob/master/vignettes/what_is_good_simulation_tool.Rmd"><code>vignettes/what_is_good_simulation_tool.Rmd</code></a></small>
+      <div class="hidden name"><code>what_is_good_simulation_tool.Rmd</code></div>
 
     </div>
 
     
     
-<div id="open-ridicule-by-statisticians" class="section level2">
+<div id="purpose" class="section level2">
 <h2 class="hasAnchor">
-<a href="#open-ridicule-by-statisticians" class="anchor"></a>Open Ridicule By Statisticians</h2>
-<ul>
-<li><p>Stepwise regression is important in developing prediction models only in the sense that it is important to avoid its use.</p></li>
-<li><p>Stepwise variable selection has done incredible damage to science. How did we statisticians let this happen?</p></li>
-<li><p>A journey of a thousand hypotheses begins with a single stepwise regression</p></li>
-</ul>
+<a href="#purpose" class="anchor"></a>Purpose</h2>
+<p>The purpose of this document is to explore what features are needed in a simulation tool for Generalized Linear Model (GLM) developers.</p>
 </div>
-<div id="statistical-issues" class="section level2">
+<div id="data-generation" class="section level2">
 <h2 class="hasAnchor">
-<a href="#statistical-issues" class="anchor"></a>Statistical Issues</h2>
-<ul>
-<li>Yields R-squared values that are biased to be high.</li>
-<li>Based on methods (e.g., F tests for nested models) intended to be used to test prespecified hypotheses.</li>
-<li>
-<em>F</em> and <span class="math inline">\(\chi^2\)</span> tests do not have the claimed distribution.</li>
-<li>Yields p-values that do not have the proper meaning, and the proper correction for them is a difficult problem.</li>
-<li>Gives biased regression coefficients that need shrinkage</li>
-</ul>
-</div>
-<div id="effects" class="section level2">
-<h2 class="hasAnchor">
-<a href="#effects" class="anchor"></a>Effects</h2>
-<ul>
-<li>Has severe problems in the presence of collinearity.</li>
-<li>Increasing the sample size does not help much. The size of the sample was of little practical importance in determining the number of authentic variables contained in the final model.</li>
-<li>The number of candidate predictor variables affected the number of noise variables that gained entry to the model.</li>
-<li>Method yields confidence intervals for effects and predicted values that are falsely narrow</li>
-</ul>
+<a href="#data-generation" class="anchor"></a>Data Generation</h2>
+<p>The first task would be to develop methods of specifying the target and predictive varialbles. This would include the number, type (categorical, )</p>
 </div>
   </div>
 
@@ -142,9 +121,8 @@
       <h2 class="hasAnchor">
 <a href="#tocnav" class="anchor"></a>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-<li><a href="#open-ridicule-by-statisticians">Open Ridicule By Statisticians</a></li>
-      <li><a href="#statistical-issues">Statistical Issues</a></li>
-      <li><a href="#effects">Effects</a></li>
+<li><a href="#purpose">Purpose</a></li>
+      <li><a href="#data-generation">Data Generation</a></li>
       </ul>
 </div>
       </div>

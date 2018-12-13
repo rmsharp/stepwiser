@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Wrapper around cv.glmnet — get_cv_glmnet • stepwiser</title>
+<title>Fits list of models to provided data — get_fit_models • stepwiser</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Wrapper around cv.glmnet — get_cv_glmnet" />
+<meta property="og:title" content="Fits list of models to provided data — get_fit_models" />
 
-<meta property="og:description" content="Wrapper around cv.glmnet" />
+<meta property="og:description" content="Fits list of models to provided data" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -126,35 +126,41 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Wrapper around cv.glmnet</h1>
-    <small class="dont-index">Source: <a href='https://github.com/rmsharp/stepwiser/blob/master/R/get_cv_glmnet.R'><code>R/get_cv_glmnet.R</code></a></small>
-    <div class="hidden name"><code>get_cv_glmnet.Rd</code></div>
+    <h1>Fits list of models to provided data</h1>
+    <small class="dont-index">Source: <a href='https://github.com/rmsharp/stepwiser/blob/master/R/get_fit_models.R'><code>R/get_fit_models.R</code></a></small>
+    <div class="hidden name"><code>get_fit_models.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Wrapper around cv.glmnet</p>
+    <p>Fits list of models to provided data</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>get_cv_glmnet</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>cv_alpha</span>)</pre>
+    <pre class="usage"><span class='fu'>get_fit_models</span>(<span class='no'>data</span>, <span class='no'>models</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>matrix of predictor varibles</p></td>
+      <th>data</th>
+      <td><p>data set made by <code>make_dataset</code></p></td>
     </tr>
     <tr>
-      <th>y</th>
-      <td><p>vector of target variables</p></td>
+      <th>models</th>
+      <td><p>character vector of model types to fit. Can be
+<code>"backward"</code>, <code>"forward"</code>, <code>"both"</code>, <code>"ridge"</code>
+<code>"lasso"</code>, or <code>"elastic_net"</code>.</p></td>
     </tr>
     <tr>
-      <th>cv_alpha</th>
-      <td><p>The elasticnet mixing parameter</p></td>
+      <th>...</th>
+      <td><p>additional named parameters needed to fit the models.</p></td>
     </tr>
     </table>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>List of fitted model objects</p>
     
 
   </div>
@@ -162,7 +168,9 @@
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-                </ul>
+      
+      <li><a href="#value">Value</a></li>
+          </ul>
 
   </div>
 </div>

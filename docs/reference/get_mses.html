@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Wrapper around cv.glmnet — get_cv_glmnet • stepwiser</title>
+<title>Get Mean Squared Errors for a list of models using test data. — get_mses • stepwiser</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Wrapper around cv.glmnet — get_cv_glmnet" />
+<meta property="og:title" content="Get Mean Squared Errors for a list of models using test data. — get_mses" />
 
-<meta property="og:description" content="Wrapper around cv.glmnet" />
+<meta property="og:description" content="Get Mean Squared Errors for a list of models using test data." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -126,35 +126,37 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Wrapper around cv.glmnet</h1>
-    <small class="dont-index">Source: <a href='https://github.com/rmsharp/stepwiser/blob/master/R/get_cv_glmnet.R'><code>R/get_cv_glmnet.R</code></a></small>
-    <div class="hidden name"><code>get_cv_glmnet.Rd</code></div>
+    <h1>Get Mean Squared Errors for a list of models using test data.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/rmsharp/stepwiser/blob/master/R/get_mses.R'><code>R/get_mses.R</code></a></small>
+    <div class="hidden name"><code>get_mses.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Wrapper around cv.glmnet</p>
+    <p>Get Mean Squared Errors for a list of models using test data.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>get_cv_glmnet</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>cv_alpha</span>)</pre>
+    <pre class="usage"><span class='fu'>get_mses</span>(<span class='no'>models</span>, <span class='no'>data</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>matrix of predictor varibles</p></td>
+      <th>models</th>
+      <td><p>list of model objects made by <code>get_fit_models</code>.</p></td>
     </tr>
     <tr>
-      <th>y</th>
-      <td><p>vector of target variables</p></td>
-    </tr>
-    <tr>
-      <th>cv_alpha</th>
-      <td><p>The elasticnet mixing parameter</p></td>
+      <th>data</th>
+      <td><p>list having the data used for training and testing the 
+various model types.</p></td>
     </tr>
     </table>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>list object with Mean Squared Errors named with the name
+of the variable selection (reduction) technique used.</p>
     
 
   </div>
@@ -162,7 +164,9 @@
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-                </ul>
+      
+      <li><a href="#value">Value</a></li>
+          </ul>
 
   </div>
 </div>

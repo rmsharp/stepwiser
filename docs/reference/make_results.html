@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Wrapper around cv.glmnet — get_cv_glmnet • stepwiser</title>
+<title>Makes a result list object with all simulation results included. — make_results • stepwiser</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Wrapper around cv.glmnet — get_cv_glmnet" />
+<meta property="og:title" content="Makes a result list object with all simulation results included. — make_results" />
 
-<meta property="og:description" content="Wrapper around cv.glmnet" />
+<meta property="og:description" content="Makes a result list object with all simulation results included." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -126,35 +126,63 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Wrapper around cv.glmnet</h1>
-    <small class="dont-index">Source: <a href='https://github.com/rmsharp/stepwiser/blob/master/R/get_cv_glmnet.R'><code>R/get_cv_glmnet.R</code></a></small>
-    <div class="hidden name"><code>get_cv_glmnet.Rd</code></div>
+    <h1>Makes a result list object with all simulation results included.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/rmsharp/stepwiser/blob/master/R/make_results.R'><code>R/make_results.R</code></a></small>
+    <div class="hidden name"><code>make_results.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Wrapper around cv.glmnet</p>
+    <p>Makes a result list object with all simulation results included.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>get_cv_glmnet</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>cv_alpha</span>)</pre>
+    <pre class="usage"><span class='fu'>make_results</span>(<span class='no'>direction</span>, <span class='no'>n</span>, <span class='no'>alpha</span>, <span class='no'>rho</span>, <span class='no'>p</span>, <span class='no'>models</span>, <span class='no'>data</span>, <span class='no'>sim</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>matrix of predictor varibles</p></td>
+      <th>direction</th>
+      <td><p>character vector with one of "backward", "forward",
+or "both".</p></td>
     </tr>
     <tr>
-      <th>y</th>
-      <td><p>vector of target variables</p></td>
+      <th>n</th>
+      <td><p>sample size</p></td>
     </tr>
     <tr>
-      <th>cv_alpha</th>
-      <td><p>The elasticnet mixing parameter</p></td>
+      <th>alpha</th>
+      <td><p>threshold value</p></td>
+    </tr>
+    <tr>
+      <th>rho</th>
+      <td><p>correlations between real predictors</p></td>
+    </tr>
+    <tr>
+      <th>p</th>
+      <td><p>number of predictor variables to include</p></td>
+    </tr>
+    <tr>
+      <th>models</th>
+      <td><p>list of fitted models</p></td>
+    </tr>
+    <tr>
+      <th>data</th>
+      <td><p>list having the data used for training and testing the 
+various model types.</p></td>
+    </tr>
+    <tr>
+      <th>sim</th>
+      <td><p>number of simulations</p></td>
     </tr>
     </table>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>The most complete form of the results of the simulation
+are provided by this object. It has a sublist of results for every
+simulated sample.</p>
     
 
   </div>
@@ -162,7 +190,9 @@
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-                </ul>
+      
+      <li><a href="#value">Value</a></li>
+          </ul>
 
   </div>
 </div>

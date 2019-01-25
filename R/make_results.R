@@ -4,8 +4,6 @@
 #' are provided by this object. It has a sublist of results for every
 #' simulated sample.
 #'
-#' @param direction character vector with one of "backward", "forward",
-#' or "both".
 #' @param n sample size
 #' @param alpha threshold value
 #' @param rho correlations between real predictors
@@ -15,7 +13,7 @@
 #' various model types.
 #' @param sim number of simulations
 #' @export
-make_results <- function(direction, n, alpha, rho, p, models, data, sim) {
+make_results <- function(n, alpha, rho, p, models, data, sim) {
   family <- get_families(models)
   link <- get_links(models)
   coef <- get_coefs(models)
